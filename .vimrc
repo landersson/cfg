@@ -183,7 +183,7 @@ inoremap jk <Esc>
 let mapleader=","
 nnoremap <leader>w :w!<cr>
 "nnoremap <leader>p <c-w>w
-"nnoremap <c-p> <c-w>w
+nnoremap <c-p> <c-w>w
 "nnoremap <c-h> <c-w>h
 "nnoremap <c-l> <c-w>l:
 nnoremap <leader>z :e #<cr>
