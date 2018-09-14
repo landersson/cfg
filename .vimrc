@@ -102,7 +102,7 @@ else
 endif
 
 " turn syntax highlighting on
-colorscheme blueberry
+silent! colorscheme blueberry
 syntax on
 
 "highlight matching angle brackets
