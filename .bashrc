@@ -32,7 +32,11 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-export PS1="\[\e[29;1m\]\h:\[\e[0m\]\W:>"
+if [[ `uname` == Darwin ]]; then 
+    export PS1="\h:\W:>"
+else
+    export PS1="\[\e[29;1m\]\h:\[\e[0m\]\W:>"
+fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -44,12 +48,31 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+if [[ "$TERM" != "dumb" ]]; then
+    if [[ `uname` == "Darwin" ]]; then
+        if [ -x /opt/local/bin/gls ]; then
+            LS=/opt/local/bin/gls
+            DC=/opt/local/bin/gdircolors
+            GREP=/opt/local/bin/ggrep
+        else
+            echo "Darwin: GNU tools not found"
+            alias ls="ls -p -G" 
+            export LSCOLORs=gxfxcxdxbxegedabagacad
+            export LS_COLOrS='ex=01;37'
+        fi
+    else
+        LS="/bin/ls"
+        DC="/usr/bin/dircolors"
+        GREP="/usr/bin/grep"
+    fi
+
+    if [ -x $DC ]; then
+        test -r ~/.dircolors && eval "$($DC -b ~/.dircolors)" || eval "$($DC -b)"
+        alias ls="$LS --color=auto"
+        alias grep="$GREP --color=auto"
+        alias fgrep='fgrep --color=auto'
+        alias egrep='egrep --color=auto'
+    fi
 fi
 
 # config managment
@@ -81,6 +104,12 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+
+# source mac-ports git-completion if found
+if [ -f /opt/local//share/git/contrib/completion/git-completion.bash ]; then
+    source /opt/local//share/git/contrib/completion/git-completion.bash
 fi
 
 
