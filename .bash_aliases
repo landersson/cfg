@@ -15,3 +15,5 @@ alias gps='git push'
 alias gpl='git pull'
 alias gdf='git diff'
 
+alias tmux='tmux -2'
+
