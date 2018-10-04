@@ -62,8 +62,8 @@ if [[ "$TERM" != "dumb" ]]; then
         fi
     else
         LS="/bin/ls"
-        DC="/usr/bin/dircolors"
-        GREP="/usr/bin/grep"
+        DC=`which dircolors`
+        GREP=`which grep`
     fi
 
     if [ -x $DC ]; then
