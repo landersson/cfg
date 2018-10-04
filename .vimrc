@@ -1,5 +1,6 @@
 " vimrc - larsand@gmail.com
 
+" install vim-plug plugin manager if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -12,14 +13,15 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-dispatch' 
 Plug 'danro/rename.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer' }
 "Plug 'fs111/pydoc.vim'
 Plug 'kana/vim-textobj-user'
 "Plug 'lucapette/vim-textobj-underscore.git'
-"Plug 'Julian/vim-textobj-variable-segment' 
+Plug 'Julian/vim-textobj-variable-segment' 
 "Plug 'sgur/vim-textobj-parameter'
-"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'machakann/vim-swap'
 Plug 'mileszs/ack.vim'
 "Plug 'rodjek/vim-puppet'
@@ -28,6 +30,7 @@ Plug 'pangloss/vim-javascript'
 "Plug 'timonv/vim-cargo'
 Plug 'landersson/vim-term-cargo'
 Plug 'landersson/vim-blueberry'
+Plug 'mkitt/tabline.vim'
 
 call plug#end()
 
@@ -72,6 +75,8 @@ set expandtab        " expand tabs to spaces
 set textwidth=0
 set nofoldenable
 
+set diffopt=filler,vertical
+
 "--- Appearance -------------------------------------------------------------  
 
 " TODO: check if this is necessary
@@ -88,7 +93,6 @@ let g:terminal_ansi_colors = [
 set t_Co=256
 
 if has("gui_running") 
-	
 	" no toolbar, no menu
 	set guioptions-=T
 	set guioptions-=m
@@ -105,7 +109,7 @@ endif
 silent! colorscheme blueberry
 syntax on
 
-"highlight matching angle brackets
+" highlight matching angle brackets
 set matchpairs+=<:> 
 
 " turn line numbers on
@@ -117,7 +121,7 @@ set showmatch
 " intelligent comments
 "set comments=sl:/*,mb:\ *,elx:\ */
 
- "incremental searching
+" incremental searching
 set incsearch
 
 " emacs style searching case policy
@@ -130,12 +134,14 @@ endif
 
 set pastetoggle=<f5>
 
+" disable ins-completion-menu messages
 set shortmess+=c
 
-autocmd BufWritePre *.{py,cc,h} :%s/\s\+$//e
 
 set laststatus=2
 set statusline=%<\ %n:%F\ %m%r%y%=%-35.(L:\ %l\/\%L,\ C:\ %c%V\ (%P)%)
+
+autocmd BufWritePre *.{py,cc,h} :%s/\s\+$//e
 
 "--- Plugin options ------------------------------------------------------------ 
 
@@ -143,6 +149,7 @@ set statusline=%<\ %n:%F\ %m%r%y%=%-35.(L:\ %l\/\%L,\ C:\ %c%V\ (%P)%)
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
 " vim-slime
 let g:slime_target = "timux"
 let g:slime_paste_file = tempname()
@@ -178,16 +185,13 @@ let g:pydoc_cmd = 'python3 -m pydoc'
 
 "--- Keyboard mapping ------------------------------------------------------------  
 
+let mapleader=","
+
 "remap jk to escape in insert mode
 inoremap jk <Esc>
-let mapleader=","
 nnoremap <leader>w :w!<cr>
-"nnoremap <leader>p <c-w>w
-nnoremap <c-p> <c-w>w
-"nnoremap <c-h> <c-w>h
-"nnoremap <c-l> <c-w>l:
 nnoremap <leader>z :e #<cr>
-nnoremap <leader>l <c-w>w
+
 " edit file in the same directory 
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>v :vsp<space>
@@ -212,6 +216,16 @@ noremap <leader>ss :setlocal spell!<cr>
 noremap <leader>pp :setlocal paste!<cr>
 noremap Y y$
 
+" tab navigation
+nnoremap th  :tabfirst<cr>
+nnoremap tk  :tabnext<cr>
+nnoremap tj  :tabprev<cr>
+nnoremap tl  :tablast<cr>
+nnoremap tt  :tabedit<space>
+nnoremap tn  :tabnew<cr>
+nnoremap tm  :tabm<space>
+nnoremap td  :tabclose<cr>
+
 " Open new line and enter insert mode without indentation
 nnoremap <S-Enter> A<cr><Esc>I
 " Open new line without entering insert mode
@@ -221,8 +235,10 @@ function! RepeatChar(char, count)
     return repeat(a:char, a:count)
 endfunction
 
+" insert/append single character, then exit insert mode
 nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
 nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
+
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
