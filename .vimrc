@@ -144,7 +144,15 @@ set shortmess+=c
 set laststatus=2
 set statusline=%<\ %n:%F\ %m%r%y%=%-35.(L:\ %l\/\%L,\ C:\ %c%V\ (%P)%)
 
-autocmd BufWritePre *.{py,cc,h} :%s/\s\+$//e
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre *.{py,cc,h} :%s/\s\+$//e
 
 "--- Plugin options ------------------------------------------------------------ 
 
