@@ -75,6 +75,9 @@ set expandtab        " expand tabs to spaces
 set textwidth=0
 set nofoldenable
 
+" enable backspacing over indentation,eol and start of insert
+set backspace=indent,eol,start
+
 set diffopt=filler,vertical
 
 "--- Appearance -------------------------------------------------------------  
