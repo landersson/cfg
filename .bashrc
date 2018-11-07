@@ -13,8 +13,13 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+# unset means unlimited
+unset HISTSIZE
+unset HISTFILESIZE
+
+# appent every command to the external history
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER \
+               "$(history 1)" >> ~/.bash_eternal_history'
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -91,9 +96,19 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -e $HOME/.bashrc.local ]; then
-    . $HOME/.bashrc.local 
-fi
+# functions
+
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+
+ldpathadd() {
+    if [ -d "$1" ] && [[ ":$LD_LIBRARY_PATH:" != *":$1:"* ]]; then
+        LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"$LD_LIBRARY_PATH:"}$1"
+    fi
+}
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -112,6 +127,20 @@ if [ -f /opt/local//share/git/contrib/completion/git-completion.bash ]; then
     source /opt/local//share/git/contrib/completion/git-completion.bash
 fi
 
-
 export EDITOR=vim
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+if [ -f $HOME/.local/bin/virtualenvwrapper.sh ]; then
+    source $HOME/.local/bin/virtualenvwrapper.sh
+fi
+
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+
+
+# run local bashrc if found
+if [ -e $HOME/.bashrc.local ]; then
+    . $HOME/.bashrc.local 
+fi
 
