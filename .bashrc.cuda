@@ -12,7 +12,7 @@ if [ -e  /usr/local/cuda-${CUDA_VER}/ ]; then
     ldpathadd $HOME/lib/cudnn/cuda-${CUDA_VER}/$CUDNN_VER/lib64/
 fi
 
-pathadd $HOME/lib/TensorRT-5.0.0.10/bin
-ldpathadd $HOME/lib/TensorRT-5.0.0.10/lib
+pathadd $HOME/lib/TensorRT-5.0.2.6/bin
+ldpathadd $HOME/lib/TensorRT-5.0.2.6/lib
 
 
