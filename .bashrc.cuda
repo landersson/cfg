@@ -1,0 +1,18 @@
+
+# CUDA related setup
+
+CUDA_VER="10.0"
+CUDNN_VER="7.3.1"
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+
+if [ -e  /usr/local/cuda-${CUDA_VER}/ ]; then
+    pathadd /usr/local/cuda-${CUDA_VER}/bin/
+    ldpathadd /usr/local/cuda-${CUDA_VER}/lib64
+    ldpathadd $HOME/lib/cudnn/cuda-${CUDA_VER}/$CUDNN_VER/lib64/
+fi
+
+pathadd $HOME/lib/TensorRT-5.0.2.6/bin
+ldpathadd $HOME/lib/TensorRT-5.0.2.6/lib
+
+
