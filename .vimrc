@@ -31,6 +31,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'landersson/vim-term-cargo'
 Plug 'landersson/vim-blueberry'
 Plug 'mkitt/tabline.vim'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -91,9 +92,10 @@ endif
 
 " Colors for builtin terminal
 let g:terminal_ansi_colors = [
-            \ "#000000", "#a82838", "#108020", "#a07010", "#4060e0", "#a050b0", "#109090", "#707070",
-            \ "#909090", "#b84050", "#309040", "#c09010", "#5080f0", "#c070d0", "#30c0c0", "#c0c0c0"]
-set t_Co=256
+            \ "#f00000", "#a82838", "#108020", "#a07010",
+            \ "#4060e0", "#a050b0", "#109090", "#007070",
+            \ "#009090", "#b84050", "#309040", "#c09010",
+            \ "#5080f0", "#c070d0", "#30c0c0", "#00c0c0" ]
 
 if has("gui_running") 
 	" no toolbar, no menu
@@ -193,6 +195,7 @@ let g:ctrlp_map = ''
 let g:ctrlp_match_current_file = 1
 
 let g:pydoc_cmd = 'python3 -m pydoc'
+let g:rustfmt_autosave = 1
 
 "--- Keyboard mapping ------------------------------------------------------------  
 
