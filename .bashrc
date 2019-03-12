@@ -131,7 +131,9 @@ export EDITOR=vim
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=`which python3`
+export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
+export VIRTUALENV_PYTHON=/usr/bin/python3
 if [ -f $HOME/.local/bin/virtualenvwrapper.sh ]; then
     source $HOME/.local/bin/virtualenvwrapper.sh
 fi
