@@ -1,0 +1,5 @@
+echo ".bashrc.Darwin"
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+export HOMEBREW_GITHUB_API_TOKEN=392d1327978f899d010a24091df953b73b333619
