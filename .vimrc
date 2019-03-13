@@ -14,9 +14,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround' 
 Plug 'tpope/vim-dispatch' 
+Plug 'tpope/vim-repeat' 
 Plug 'danro/rename.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer' }
-"Plug 'fs111/pydoc.vim'
 Plug 'kana/vim-textobj-user'
 "Plug 'lucapette/vim-textobj-underscore.git'
 Plug 'Julian/vim-textobj-variable-segment' 
@@ -27,6 +27,7 @@ Plug 'mileszs/ack.vim'
 "Plug 'rodjek/vim-puppet'
 "Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'pangloss/vim-javascript'
+Plug 'rhysd/vim-clang-format'
 "Plug 'timonv/vim-cargo'
 Plug 'landersson/vim-term-cargo'
 Plug 'landersson/vim-blueberry'
@@ -189,6 +190,11 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+" clang-format options
+let g:clang_format#detect_style_file = 1
+let g:clang_format#enable_fallback_style = 0  " Do nothing if .clang-format file not found
+autocmd FileType c,cpp ClangFormatAutoEnable
 
 " CtrlP options
 let g:ctrlp_map = '' 

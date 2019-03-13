@@ -37,11 +37,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-if [[ `uname` == Darwin ]]; then 
-    export PS1="\h:\W:>"
-else
-    export PS1="\[\e[29;1m\]\h:\[\e[0m\]\W:>"
-fi
+export PS1="\[\e[29;1m\]\h:\[\e[0m\]\W:>"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -71,7 +67,7 @@ if [[ "$TERM" != "dumb" ]]; then
         GREP=`which grep`
     fi
 
-    if [ -x $DC ]; then
+    if [ -x "$DC" ]; then
         test -r ~/.dircolors && eval "$($DC -b ~/.dircolors)" || eval "$($DC -b)"
         alias ls="$LS --color=auto"
         alias grep="$GREP --color=auto"
@@ -110,6 +106,10 @@ ldpathadd() {
     fi
 }
 
+ehgrep() {
+    grep --color=auto $1 ~/.bash_eternal_history
+}
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -131,12 +131,19 @@ export EDITOR=vim
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=`which python3`
+export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
+export VIRTUALENV_PYTHON=/usr/bin/python3
 if [ -f $HOME/.local/bin/virtualenvwrapper.sh ]; then
     source $HOME/.local/bin/virtualenvwrapper.sh
 fi
 
 export PYTHONSTARTUP=$HOME/.pythonrc.py
+
+# run system specific bashrc if found
+if [ -e $HOME/.bashrc.`uname -s` ]; then
+    . $HOME/.bashrc.`uname -s` 
+fi
 
 
 # run local bashrc if found
