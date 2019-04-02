@@ -31,6 +31,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'landersson/vim-term-cargo'
 Plug 'landersson/vim-blueberry'
 Plug 'mkitt/tabline.vim'
+Plug 'w0rp/ale'
 Plug 'rust-lang/rust.vim'
 
 call plug#end()
@@ -167,17 +168,24 @@ endif
 let g:slime_target = "timux"
 let g:slime_paste_file = tempname()
 
+" TODO: remove this
 " syntastic options
-let g:syntastic_cpp_compiler = 'clang++-3.6'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+"let g:syntastic_cpp_compiler = 'clang++-3.6'
+"let g:syntastic_cpp_compiler_options = ' -std=c++11'
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+" ALE options
+let g:ale_sign_column_always = 1
+let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck']
+let g:ale_cpp_clangtidy_checks = [ "clang-*", "readability-*", "-readability-braces*", "-readability-else-after*"]
+
 
 " YCM options
 let g:ycm_always_populate_loc_list = 0
