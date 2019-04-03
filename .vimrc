@@ -26,6 +26,7 @@ Plug 'machakann/vim-swap'
 Plug 'mileszs/ack.vim'
 "Plug 'rodjek/vim-puppet'
 "Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'plytophogy/vim-virtualenv'
 Plug 'pangloss/vim-javascript'
 Plug 'rhysd/vim-clang-format'
 "Plug 'timonv/vim-cargo'
@@ -148,6 +149,8 @@ set shortmess+=c
 set laststatus=2
 set statusline=%<\ %n:%F\ %m%r%y%=%-35.(L:\ %l\/\%L,\ C:\ %c%V\ (%P)%)
 
+" This function will remove trailing whitespace while
+" attempting to preserve the current cursor position
 function! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
@@ -156,7 +159,9 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 
 autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
-"autocmd BufWritePre *.{py,cc,h} :%s/\s\+$//e
+
+" Open help in vertical rather than horizontal split  
+autocmd FileType help wincmd L
 
 "--- Plugin options ------------------------------------------------------------ 
 
@@ -275,6 +280,7 @@ noremap <Right> <NOP>
 " Compile buffer as rust and run
 noremap <leader>rr :w<cr>:RustRun<cr>
 
+noremap <leader>pr :w<CR>:!clear;python %<CR>
 " show symbol id for word under cursor
 noremap <leader>xs :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"

@@ -133,9 +133,11 @@ export EDITOR=vim
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=`which python3`
 export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
-export VIRTUALENV_PYTHON=/usr/bin/python3
+export VIRTUALENV_PYTHON=`which python3`
 if [ -f $HOME/.local/bin/virtualenvwrapper.sh ]; then
     source $HOME/.local/bin/virtualenvwrapper.sh
+elif [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 export PYTHONSTARTUP=$HOME/.pythonrc.py
