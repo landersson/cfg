@@ -93,12 +93,6 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-" Colors for builtin terminal
-let g:terminal_ansi_colors = [
-            \ "#f00000", "#a82838", "#108020", "#a07010",
-            \ "#4060e0", "#a050b0", "#109090", "#007070",
-            \ "#009090", "#b84050", "#309040", "#c09010",
-            \ "#5080f0", "#c070d0", "#30c0c0", "#00c0c0" ]
 
 if has("gui_running") 
 	" no toolbar, no menu
@@ -191,6 +185,8 @@ let g:slime_paste_file = tempname()
 let g:ale_sign_column_always = 1
 let g:ale_linters = {}
 let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck']
+let g:ale_linters.python = ['flake8']
+let g:ale_fixers = {'python': ['autopep8'] }
 let g:ale_cpp_clangtidy_checks = [ "clang-*", "readability-*", "-readability-braces*", "-readability-else-after*"]
 
 
@@ -240,7 +236,7 @@ nnoremap <leader>b :buffers<cr>:b<space>
 nnoremap <leader>n :NERDTree<cr>
 nnoremap <leader>m :CtrlPMRUFiles<cr>
 nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>t :botright split<cr>:term ++curwin<cr>
+nnoremap <leader>t :botright vsplit<cr>:term ++curwin<cr>
 nnoremap <leader>` :vsplit $MYVIMRC<cr>
 nnoremap <leader>% :w<cr>:so %<cr>
 nnoremap <leader><space> i<space><Esc>la<space><Esc>h
