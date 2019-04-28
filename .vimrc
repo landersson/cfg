@@ -24,6 +24,7 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'machakann/vim-swap'
 Plug 'mileszs/ack.vim'
+Plug 'easymotion/vim-easymotion'
 "Plug 'rodjek/vim-puppet'
 "Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'plytophogy/vim-virtualenv'
@@ -234,16 +235,19 @@ nnoremap <leader>xq :cclose<cr>  " close quickfix
 nnoremap <leader>q :bp\|bd #<cr>
 nnoremap <leader>b :buffers<cr>:b<space>
 nnoremap <leader>n :NERDTree<cr>
+nnoremap <leader>d "_d
+nnoremap <leader>D "_D
 nnoremap <leader>m :CtrlPMRUFiles<cr>
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>t :botright vsplit<cr>:term ++curwin<cr>
 nnoremap <leader>` :vsplit $MYVIMRC<cr>
 nnoremap <leader>% :w<cr>:so %<cr>
 nnoremap <leader><space> i<space><Esc>la<space><Esc>h
+vnoremap <leader>p "_dP
 " Pressing ,ss will toggle and untoggle spell checking
 noremap <leader>ss :setlocal spell!<cr>
 " Toggle paste mode on and off
-noremap <leader>pp :setlocal paste!<cr>
+"noremap <leader>pp :setlocal paste!<cr>
 noremap Y y$
 
 " tab navigation
@@ -277,7 +281,7 @@ noremap <Right> <NOP>
 " Compile buffer as rust and run
 noremap <leader>rr :w<cr>:RustRun<cr>
 
-noremap <leader>pr :w<CR>:!clear;python %<CR>
+"noremap <leader>pr :w<CR>:!clear;python %<CR>
 " show symbol id for word under cursor
 noremap <leader>xs :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
