@@ -18,15 +18,12 @@ Plug 'tpope/vim-repeat'
 Plug 'danro/rename.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer' }
 Plug 'kana/vim-textobj-user'
-"Plug 'lucapette/vim-textobj-underscore.git'
 Plug 'Julian/vim-textobj-variable-segment' 
 Plug 'sgur/vim-textobj-parameter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'machakann/vim-swap'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
-"Plug 'rodjek/vim-puppet'
-"Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'pangloss/vim-javascript'
 Plug 'rhysd/vim-clang-format'
@@ -84,6 +81,9 @@ set nofoldenable
 set backspace=indent,eol,start
 
 set diffopt=filler,vertical
+
+" max height of preview window
+set previewheight=16
 
 "--- Appearance -------------------------------------------------------------  
 
@@ -169,19 +169,6 @@ endif
 let g:slime_target = "timux"
 let g:slime_paste_file = tempname()
 
-" TODO: remove this
-" syntastic options
-"let g:syntastic_cpp_compiler = 'clang++-3.6'
-"let g:syntastic_cpp_compiler_options = ' -std=c++11'
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
 " ALE options
 let g:ale_sign_column_always = 1
 let g:ale_linters = {}
@@ -189,6 +176,7 @@ let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck']
 let g:ale_linters.python = ['flake8']
 let g:ale_fixers = {'python': ['autopep8'] }
 let g:ale_cpp_clangtidy_checks = [ "clang-*", "readability-*", "-readability-braces*", "-readability-else-after*"]
+let g:ale_python_flake8_options = '--max-line-length=98'
 
 
 " YCM options
@@ -198,7 +186,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_cache_omnifunc=0
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
@@ -230,16 +218,14 @@ nnoremap <leader>g :YcmCompleter GoTo<cr>
 nnoremap <leader>s :%s/
 nnoremap <leader>a ct_
 nnoremap <leader>X :x<cr>
-nnoremap <leader>xw <c-w>q       " close current window
 nnoremap <leader>xq :cclose<cr>  " close quickfix
 nnoremap <leader>q :bp\|bd #<cr>
 nnoremap <leader>b :buffers<cr>:b<space>
-nnoremap <leader>n :NERDTree<cr>
 nnoremap <leader>d "_d
 nnoremap <leader>D "_D
 nnoremap <leader>m :CtrlPMRUFiles<cr>
 nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>t :botright vsplit<cr>:term ++curwin<cr>
+nnoremap <leader>t :botright split<cr>:term ++curwin<cr>
 nnoremap <leader>` :vsplit $MYVIMRC<cr>
 nnoremap <leader>% :w<cr>:so %<cr>
 nnoremap <leader><space> i<space><Esc>la<space><Esc>h
@@ -259,6 +245,9 @@ nnoremap tt  :tabedit<space>
 nnoremap tn  :tabnew<cr>
 nnoremap tm  :tabm<space>
 nnoremap td  :tabclose<cr>
+
+nnoremap [a :ALEPrevious<cr>
+nnoremap ]a :ALENext<cr>
 
 " Open new line and enter insert mode without indentation
 nnoremap <S-Enter> A<cr><Esc>I
@@ -280,6 +269,7 @@ noremap <Right> <NOP>
 
 " Compile buffer as rust and run
 noremap <leader>rr :w<cr>:RustRun<cr>
+noremap <leader>rt :botright split<cr>:term ++curwin<cr>
 
 "noremap <leader>pr :w<CR>:!clear;python %<CR>
 " show symbol id for word under cursor
