@@ -214,7 +214,8 @@ nnoremap <leader>z :e #<cr>
 " edit file in the same directory 
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>v :vsp<space>
-nnoremap <leader>g :YcmCompleter GoTo<cr>
+nnoremap <leader>gg :YcmCompleter GoTo<cr>
+nnoremap <leader>gd :YcmCompleter GetDoc<cr>
 nnoremap <leader>s :%s/
 nnoremap <leader>a ct_
 nnoremap <leader>X :x<cr>
