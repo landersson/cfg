@@ -28,6 +28,8 @@ Plug 'plytophogy/vim-virtualenv'
 Plug 'pangloss/vim-javascript'
 Plug 'rhysd/vim-clang-format'
 "Plug 'timonv/vim-cargo'
+"Plug 'vim-python/python-syntax'
+"Plug 'hdima/python-syntax'
 Plug 'landersson/vim-term-cargo'
 Plug 'landersson/vim-blueberry'
 Plug 'mkitt/tabline.vim'
@@ -95,7 +97,10 @@ if exists('+termguicolors')
 endif
 
 
-if has("gui_running") 
+if has("gui_running")
+    if has("osx")
+        set guifont=Menlo-Regular:h12
+    endif
 	" no toolbar, no menu
 	set guioptions-=T
 	set guioptions-=m
@@ -200,6 +205,7 @@ let g:ctrlp_map = ''
 let g:ctrlp_match_current_file = 1
 
 let g:pydoc_cmd = 'python3 -m pydoc'
+let g:python_highlight_all = 1
 let g:rustfmt_autosave = 1
 
 "--- Keyboard mapping ------------------------------------------------------------  
@@ -272,7 +278,7 @@ noremap <Right> <NOP>
 noremap <leader>rr :w<cr>:RustRun<cr>
 noremap <leader>rt :botright split<cr>:term ++curwin<cr>
 
-"noremap <leader>pr :w<CR>:!clear;python %<CR>
+noremap <leader>rr :w<CR>:!clear;python %<CR>
 " show symbol id for word under cursor
 noremap <leader>xs :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
