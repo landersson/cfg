@@ -30,6 +30,7 @@ Plug 'rhysd/vim-clang-format'
 "Plug 'timonv/vim-cargo'
 "Plug 'vim-python/python-syntax'
 "Plug 'hdima/python-syntax'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'landersson/vim-term-cargo'
 Plug 'landersson/vim-blueberry'
 Plug 'mkitt/tabline.vim'
@@ -87,6 +88,10 @@ set diffopt=filler,vertical
 " max height of preview window
 set previewheight=16
 
+if exists('python_space_error_highlight')
+    unlet python_space_error_highlight
+endif
+
 "--- Appearance -------------------------------------------------------------  
 
 " TODO: check if this is necessary
@@ -99,7 +104,7 @@ endif
 
 if has("gui_running")
     if has("osx")
-        set guifont=Menlo-Regular:h12
+        set guifont=Menlo-Regular:h14
     endif
 	" no toolbar, no menu
 	set guioptions-=T
@@ -183,7 +188,9 @@ let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck']
 let g:ale_linters.rust = ['rls']
 let g:ale_linters.python = ['flake8']
 let g:ale_fixers = {'python': ['autopep8'] }
-let g:ale_cpp_clangtidy_checks = [ "clang-*", "readability-*", "-readability-braces*", "-readability-else-after*"]
+let g:ale_lint_on_insert_leave = 0
+"let g:ale_cpp_clangtidy_checks = [ "clang-*", "readability-*", "-readability-braces*", "-readability-else-after*"]
+let g:ale_cpp_clangtidy_checks = [ "-clang-analyzer*", "readability-*", "-readability-braces*", "-readability-else-after*", "-readability-magic-*"]
 let g:ale_python_flake8_options = '--max-line-length=98'
 "let g:ale_rust_rustc_options="--emit metadata"
 let g:ale_rust_rustc_options=""
@@ -203,8 +210,11 @@ let g:ycm_rust_src_path = "/Users/laan/.rustup/toolchains/stable-x86_64-apple-da
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " clang-format options
+"let g:clang_format#auto_formatexpr = 1
+let g:clang_format#auto_format_on_insert_leave = 0
 let g:clang_format#detect_style_file = 1
 let g:clang_format#enable_fallback_style = 0  " Do nothing if .clang-format file not found
+
 autocmd FileType c,cpp ClangFormatAutoEnable
 
 " CtrlP options
@@ -230,7 +240,7 @@ nnoremap <leader>v :vsp<space>
 nnoremap <leader>gg :YcmCompleter GoTo<cr>
 nnoremap <leader>gd :YcmCompleter GetDoc<cr>
 nnoremap <leader>s :%s/
-nnoremap <leader>a ct_
+nnoremap <leader>a :Ack<cr>
 nnoremap <leader>X :x<cr>
 nnoremap <leader>xq :cclose<cr>  " close quickfix
 nnoremap <leader>q :bp\|bd #<cr>
