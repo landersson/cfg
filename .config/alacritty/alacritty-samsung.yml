@@ -42,16 +42,6 @@ scrolling:
   # scrolled when scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number
-  # of lines the terminal should scroll when the alternate
-  # screen buffer is active. This is used to allow mouse
-  # scrolling for applications like `man`.
-  #
-  # To disable this completely, set `faux_multiplier` to 0.
-  faux_multiplier: 3
-
   # Automatically scroll to the bottom when new text is written
   # to the terminal.
   auto_scroll: false
@@ -252,7 +242,7 @@ colors:
     # black text on the background.
     black:   '0x181c24'
     red:     '0xbf5848'
-    green:   '0x609070'
+    green:   '0x609868'
     yellow:  '0xd0a654'
     blue:    '0x6890d8'
     magenta: '0xa088d0'
@@ -263,7 +253,7 @@ colors:
   bright:
     black:   '0x383c44'
     red:     '0xbf5848'
-    green:   '0x70a080'
+    green:   '0x70a880'
     yellow:  '0xd0a654'
     blue:    '0x6890d8'
     magenta: '0xa088d0'
