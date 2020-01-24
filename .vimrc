@@ -36,6 +36,9 @@ Plug 'landersson/vim-blueberry'
 Plug 'mkitt/tabline.vim'
 Plug 'w0rp/ale'
 Plug 'rust-lang/rust.vim'
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'aklt/plantuml-syntax'
 
 call plug#end()
 
@@ -194,6 +197,7 @@ let g:ale_python_flake8_options = '--max-line-length=98'
 
 " YCM options
 let g:ycm_always_populate_loc_list = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
