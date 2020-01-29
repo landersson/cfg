@@ -16,7 +16,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch' 
 Plug 'tpope/vim-repeat' 
 Plug 'danro/rename.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer --racer-completer' }
 Plug 'kana/vim-textobj-user'
 Plug 'Julian/vim-textobj-variable-segment' 
 Plug 'sgur/vim-textobj-parameter'
@@ -36,6 +36,9 @@ Plug 'landersson/vim-blueberry'
 Plug 'mkitt/tabline.vim'
 Plug 'w0rp/ale'
 Plug 'rust-lang/rust.vim'
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'aklt/plantuml-syntax'
 
 call plug#end()
 
@@ -104,7 +107,7 @@ endif
 
 if has("gui_running")
     if has("osx")
-        set guifont=Menlo-Regular:h12
+        set guifont=Menlo-Regular:h14
     endif
     if hostname() == "whisky"
         set guifont=Monospace\ 12
@@ -185,18 +188,24 @@ let g:slime_paste_file = tempname()
 " ALE options
 let g:ale_sign_column_always = 1
 let g:ale_linters = {}
-"let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck']
-let g:ale_linters.cpp = ['clangtidy']
+let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck']
+"let g:ale_linters.rust = ['cargo', 'rustc']
+"let g:ale_linters.rust = ['rls', 'rustc']
+let g:ale_linters.rust = ['rls']
 let g:ale_linters.python = ['flake8']
 let g:ale_fixers = {'python': ['autopep8'] }
 let g:ale_lint_on_insert_leave = 0
 "let g:ale_cpp_clangtidy_checks = [ "clang-*", "readability-*", "-readability-braces*", "-readability-else-after*"]
 let g:ale_cpp_clangtidy_checks = [ "-clang-analyzer*", "readability-*", "-readability-braces*", "-readability-else-after*", "-readability-magic-*"]
 let g:ale_python_flake8_options = '--max-line-length=98'
+"let g:ale_rust_rustc_options="--emit metadata"
+let g:ale_rust_rustc_options=""
+"let g:ale_rust_rustfmt_options
 
 
 " YCM options
 let g:ycm_always_populate_loc_list = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -204,6 +213,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_cache_omnifunc=0
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_rust_src_path = "/Users/laan/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " clang-format options
@@ -292,7 +302,7 @@ noremap <Right> <NOP>
 noremap <leader>rr :w<cr>:RustRun<cr>
 noremap <leader>rt :botright split<cr>:term ++curwin<cr>
 
-noremap <leader>rr :w<CR>:!clear;python %<CR>
+"noremap <leader>rr :w<CR>:!clear;python %<CR>
 " show symbol id for word under cursor
 noremap <leader>xs :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
