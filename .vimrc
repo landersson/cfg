@@ -16,7 +16,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch' 
 Plug 'tpope/vim-repeat' 
 Plug 'danro/rename.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer' }
 Plug 'kana/vim-textobj-user'
 Plug 'Julian/vim-textobj-variable-segment' 
 Plug 'sgur/vim-textobj-parameter'
@@ -105,6 +105,9 @@ endif
 if has("gui_running")
     if has("osx")
         set guifont=Menlo-Regular:h12
+    endif
+    if hostname() == "whisky"
+        set guifont=Monospace\ 12
     endif
 	" no toolbar, no menu
 	set guioptions-=T
