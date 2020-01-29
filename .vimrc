@@ -39,6 +39,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
+Plug 'peterhoeg/vim-qml'
 
 call plug#end()
 
