@@ -30,7 +30,9 @@ Plug 'rhysd/vim-clang-format'
 "Plug 'timonv/vim-cargo'
 "Plug 'vim-python/python-syntax'
 "Plug 'hdima/python-syntax'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'dhruvasagar/vim-zoom'           " Toogle zoom of current window using C-w m
 Plug 'landersson/vim-term-cargo'
 Plug 'landersson/vim-blueberry'
 Plug 'mkitt/tabline.vim'
