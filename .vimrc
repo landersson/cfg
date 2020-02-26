@@ -16,7 +16,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch' 
 Plug 'tpope/vim-repeat' 
 Plug 'danro/rename.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer --racer-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer --racer-completer' }
 Plug 'kana/vim-textobj-user'
 Plug 'Julian/vim-textobj-variable-segment' 
 Plug 'sgur/vim-textobj-parameter'
@@ -30,7 +30,9 @@ Plug 'rhysd/vim-clang-format'
 "Plug 'timonv/vim-cargo'
 "Plug 'vim-python/python-syntax'
 "Plug 'hdima/python-syntax'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'dhruvasagar/vim-zoom'           " Toogle zoom of current window using C-w m
 Plug 'landersson/vim-term-cargo'
 Plug 'landersson/vim-blueberry'
 Plug 'mkitt/tabline.vim'
@@ -39,6 +41,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
+Plug 'peterhoeg/vim-qml'
 
 call plug#end()
 
@@ -108,6 +111,9 @@ endif
 if has("gui_running")
     if has("osx")
         set guifont=Menlo-Regular:h14
+    endif
+    if hostname() == "whisky"
+        set guifont=Monospace\ 12
     endif
 	" no toolbar, no menu
 	set guioptions-=T
