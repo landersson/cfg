@@ -191,7 +191,7 @@ let g:slime_paste_file = tempname()
 " ALE options
 let g:ale_sign_column_always = 1
 let g:ale_linters = {}
-let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck']
+let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck', 'clangd']
 "let g:ale_linters.rust = ['cargo', 'rustc']
 "let g:ale_linters.rust = ['rls', 'rustc']
 let g:ale_linters.rust = ['rls']
