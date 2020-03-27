@@ -198,7 +198,7 @@ debug.render_timer: false
 # One Dark, Hybrid, Seoul
 #
 
-## Colors (One Dark)
+## Colors (BlueBerry)
 colors:
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
@@ -207,32 +207,67 @@ colors:
 
   # Default colors
   primary:
-    background: '0x282c34'
-    foreground: '0xabb2bf'
+    background: '0x1c1a1c'
+    foreground: '0xa0a0a0'
 
   # Normal colors
   normal:
     # NOTE: Use '0x131613' for the `black` color if you'd like to see
     # black text on the background.
-    black:   '0x282c34'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
+    black:   '0x181c24'
+    red:     '0xbf5848'
+    green:   '0x609868'
+    yellow:  '0xd0a654'
+    blue:    '0x6890d8'
+    magenta: '0xa088d0'
+    cyan:    '0x55a0b0'
+    white:   '0xb8b8b8'
 
   # Bright colors
   bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
+    black:   '0x383c44'
+    red:     '0xbf5848'
+    green:   '0x70a880'
+    yellow:  '0xd0a654'
+    blue:    '0x6890d8'
+    magenta: '0xa088d0'
+    cyan:    '0x55a0b0'
     white:   '0xffffff'
+## Colors (One Dark)
+#colors:
+  ## Colors the cursor will use if `custom_cursor_colors` is true
+  #cursor:
+    #text: '0x000000'
+    #cursor: '0xe00000'
+
+  ## Default colors
+  #primary:
+    #background: '0x282c34'
+    #foreground: '0xabb2bf'
+
+  ## Normal colors
+  #normal:
+    ## NOTE: Use '0x131613' for the `black` color if you'd like to see
+    ## black text on the background.
+    #black:   '0x282c34'
+    #red:     '0xe06c75'
+    #green:   '0x98c379'
+    #yellow:  '0xd19a66'
+    #blue:    '0x61afef'
+    #magenta: '0xc678dd'
+    #cyan:    '0x56b6c2'
+    #white:   '0xabb2bf'
+
+  ## Bright colors
+  #bright:
+    #black:   '0x5c6370'
+    #red:     '0xe06c75'
+    #green:   '0x98c379'
+    #yellow:  '0xd19a66'
+    #blue:    '0x61afef'
+    #magenta: '0xc678dd'
+    #cyan:    '0x56b6c2'
+    #white:   '0xffffff'
 
 ## Colors (Hybrid)
 #colors:
