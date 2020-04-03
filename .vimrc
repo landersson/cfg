@@ -34,6 +34,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'pangloss/vim-javascript'
 Plug 'rhysd/vim-clang-format'
+Plug 'Chiel92/vim-autoformat'
 "Plug 'timonv/vim-cargo'
 "Plug 'vim-python/python-syntax'
 "Plug 'hdima/python-syntax'
@@ -203,9 +204,7 @@ let g:slime_paste_file = tempname()
 " ALE options
 let g:ale_sign_column_always = 1
 let g:ale_linters = {}
-"let g:ale_linters.cpp = ['clangd', 'clangcheck', 'clangtidy', 'cppcheck']
 let g:ale_linters.cpp = ['clangd']
-"let g:ale_fixers.cpp = ['clangtidy']
 "let g:ale_linters.rust = ['cargo', 'rustc']
 "let g:ale_linters.rust = ['rls', 'rustc']
 let g:ale_linters.rust = ['rls']
@@ -239,6 +238,8 @@ let g:ycm_rust_src_path = "/Users/laan/.rustup/toolchains/stable-x86_64-apple-da
 let g:clang_format#auto_format_on_insert_leave = 0
 let g:clang_format#detect_style_file = 1
 let g:clang_format#enable_fallback_style = 0  " Do nothing if .clang-format file not found
+
+let g:autoformat_verbosemode=1
 
 autocmd FileType c,cpp ClangFormatAutoEnable
 
