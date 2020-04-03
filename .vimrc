@@ -19,6 +19,13 @@ Plug 'danro/rename.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer --racer-completer' }
 Plug 'kana/vim-textobj-user'
 Plug 'Julian/vim-textobj-variable-segment' 
+
+" Enable comments as text objects (ac,ic)
+Plug 'glts/vim-textobj-comment'
+
+Plug 'cocopon/iceberg.vim'
+Plug 'arcticicestudio/nord-vim'
+
 Plug 'sgur/vim-textobj-parameter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'machakann/vim-swap'
@@ -115,6 +122,10 @@ if has("gui_running")
     if hostname() == "whisky"
         set guifont=Monospace\ 12
     endif
+    if hostname() == "ryzen"
+        "set guifont=DejaVu\ Sans\ Mono\ 10
+        set guifont=Monospace\ 10
+    endif
 	" no toolbar, no menu
 	set guioptions-=T
 	set guioptions-=m
@@ -128,7 +139,8 @@ else
 endif
 
 " turn syntax highlighting on
-silent! colorscheme blueberry
+"silent! colorscheme blueberry
+silent! colorscheme iceberg
 syntax on
 
 " highlight matching angle brackets
@@ -191,12 +203,14 @@ let g:slime_paste_file = tempname()
 " ALE options
 let g:ale_sign_column_always = 1
 let g:ale_linters = {}
-let g:ale_linters.cpp = ['clangcheck', 'clangtidy', 'cppcheck']
+"let g:ale_linters.cpp = ['clangd', 'clangcheck', 'clangtidy', 'cppcheck']
+let g:ale_linters.cpp = ['clangd']
+"let g:ale_fixers.cpp = ['clangtidy']
 "let g:ale_linters.rust = ['cargo', 'rustc']
 "let g:ale_linters.rust = ['rls', 'rustc']
 let g:ale_linters.rust = ['rls']
 let g:ale_linters.python = ['flake8']
-let g:ale_fixers = {'python': ['autopep8'] }
+let g:ale_fixers = {'python': ['autopep8'], 'cpp': 'clangtidy' }
 let g:ale_lint_on_insert_leave = 0
 "let g:ale_cpp_clangtidy_checks = [ "clang-*", "readability-*", "-readability-braces*", "-readability-else-after*"]
 let g:ale_cpp_clangtidy_checks = [ "-clang-analyzer*", "readability-*", "-readability-braces*", "-readability-else-after*", "-readability-magic-*"]
@@ -209,6 +223,7 @@ let g:ale_rust_rustc_options=""
 " YCM options
 let g:ycm_always_populate_loc_list = 0
 let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
