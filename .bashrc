@@ -86,6 +86,7 @@ alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias eh=eh_grep
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
@@ -93,6 +94,10 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # functions
+
+eh_grep() {
+    grep $1 ~/.bash_eternal_history
+}
 
 pathadd() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
@@ -153,3 +158,6 @@ if [ -e $HOME/.bashrc.local ]; then
     . $HOME/.bashrc.local 
 fi
 
+if [ -e $HOME/.cargo/env ]; then
+    . $HOME/.cargo/env
+fi

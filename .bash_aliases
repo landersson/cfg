@@ -16,4 +16,4 @@ alias gpl='git pull'
 alias gdf='git diff'
 
 alias tmux='tmux -2'
-
+alias mvim=/Applications/MacVim.app/Contents/bin/mvim
