@@ -19,3 +19,5 @@ alias tmux='tmux -2'
 alias tgur='ssh root@tgur'
 alias tge01='/usr/bin/ssh root@tgurenv01'
 alias lh00='/usr/bin/ssh root@liebherr00'
+
+alias mvim=/Applications/MacVim.app/Contents/bin/mvim
