@@ -3,7 +3,6 @@
 alias ll='ls -l'
 alias la='ls -A'
 alias l="less"
-alias ssh="ssh -X"
 alias dbm='printf "\e[?2004l"'
 
 # git aliases
@@ -17,3 +16,6 @@ alias gdf='git diff'
 
 alias tmux='tmux -2'
 
+alias tgur='ssh root@tgur'
+alias tge01='/usr/bin/ssh root@tgurenv01'
+alias lh00='/usr/bin/ssh root@liebherr00'
