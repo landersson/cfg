@@ -186,8 +186,9 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-"autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
-au BufWrite *.py :Autoformat
+autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
+"autocmd BufWrite *.py :Autoformat
+autocmd bufreadpre *.py setlocal textwidth=96
 
 
 " Open help in vertical rather than horizontal split  
