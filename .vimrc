@@ -126,8 +126,8 @@ if has("gui_running")
         set guifont=Monospace\ 12
     endif
     if hostname() == "ryzen"
-        "set guifont=DejaVu\ Sans\ Mono\ 10
-        set guifont=Monospace\ 10
+        set guifont=DejaVu\ Sans\ Mono\ 10
+        "set guifont=Monospace\ 11
     endif
 	" no toolbar, no menu
 	set guioptions-=T
@@ -142,8 +142,8 @@ else
 endif
 
 " turn syntax highlighting on
-"silent! colorscheme blueberry
-silent! colorscheme iceberg
+silent! colorscheme blueberry
+"silent! colorscheme iceberg
 syntax on
 
 " highlight matching angle brackets
