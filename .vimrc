@@ -50,6 +50,7 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'peterhoeg/vim-qml'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
@@ -253,6 +254,7 @@ let g:pydoc_cmd = 'python3 -m pydoc'
 let g:python_highlight_all = 1
 let g:rustfmt_autosave = 1
 
+let g:markdown_github_languages = ['bash=sh']
 "--- Keyboard mapping ------------------------------------------------------------  
 
 let mapleader=","
