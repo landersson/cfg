@@ -122,7 +122,7 @@ if has("gui_running")
         set guifont=Menlo-Regular:h14
     endif
     if hostname() == "whisky"
-        set guifont=Monospace\ 12
+        set guifont=Monospace\ 14
     endif
     if hostname() == "ryzen"
         "set guifont=DejaVu\ Sans\ Mono\ 10
@@ -186,8 +186,8 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
-"autocmd BufWrite *.py :Autoformat
+"autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
+autocmd BufWrite *.py :Autoformat
 autocmd bufreadpre *.py setlocal textwidth=96
 
 
