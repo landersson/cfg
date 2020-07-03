@@ -9,11 +9,13 @@ alias dbm='printf "\e[?2004l"'
 # git aliases
 alias gst='git status'
 alias gco='git commit'
+alias gce='git checkout'
 alias gad='git add'
 alias glg='git log'
 alias gps='git push'
 alias gpl='git pull'
 alias gdf='git diff'
+alias gbr='git branch'
 
 alias tmux='tmux -2'
 
