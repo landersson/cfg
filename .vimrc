@@ -16,7 +16,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch' 
 Plug 'tpope/vim-repeat' 
 Plug 'danro/rename.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer --racer-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clangd-completer' }
 Plug 'kana/vim-textobj-user'
 Plug 'Julian/vim-textobj-variable-segment' 
 
@@ -136,13 +136,14 @@ if has("gui_running")
 	" no left hand scroll bar
 	set guioptions-=L
     set bg=light
+    silent! colorscheme blueberry
 else
     set bg=dark
+    silent! colorscheme iceberg
 endif
 
 " turn syntax highlighting on
 "silent! colorscheme blueberry
-silent! colorscheme iceberg
 syntax on
 
 " highlight matching angle brackets
@@ -186,13 +187,18 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
 "autocmd BufWrite *.py :Autoformat
 autocmd bufreadpre *.py setlocal textwidth=96
 
 
 " Open help in vertical rather than horizontal split  
 autocmd FileType help wincmd L
+
+augroup PreviewAutocmds
+  autocmd!
+  autocmd WinEnter * if &previewwindow | setlocal ft=markdown | endif
+augroup END
 
 "--- Plugin options ------------------------------------------------------------ 
 
@@ -206,12 +212,11 @@ let g:slime_target = "timux"
 let g:slime_paste_file = tempname()
 
 " ALE options
+let g:ale_set_balloons = 1
 let g:ale_sign_column_always = 1
 let g:ale_linters = {}
 let g:ale_linters.cpp = ['clangd']
-"let g:ale_linters.rust = ['cargo', 'rustc']
-"let g:ale_linters.rust = ['rls', 'rustc']
-let g:ale_linters.rust = ['rls']
+let g:ale_linters.rust = ['analyzer']
 let g:ale_linters.python = ['flake8']
 let g:ale_fixers = {'python': ['autopep8'], 'cpp': 'clangtidy' }
 let g:ale_lint_on_insert_leave = 0
@@ -232,10 +237,20 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_cache_omnifunc=0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 0
 let g:ycm_rust_src_path = "/Users/laan/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_language_server =
+\ [
+\   {
+\     'name': 'rust',
+\     'cmdline': ['rust-analyzer'],
+\     'filetypes': ['rust'],
+\     'project_root_files': ['Cargo.toml']
+\   }
+\ ]
+let g:ycm_auto_hover = ''
 
 " clang-format options
 "let g:clang_format#auto_formatexpr = 1
@@ -253,6 +268,7 @@ let g:pydoc_cmd = 'python3 -m pydoc'
 let g:python_highlight_all = 1
 let g:rustfmt_autosave = 1
 
+
 "--- Keyboard mapping ------------------------------------------------------------  
 
 let mapleader=","
@@ -267,6 +283,7 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <leader>v :vsp<space>
 nnoremap <leader>gg :YcmCompleter GoTo<cr>
 nnoremap <leader>gd :YcmCompleter GetDoc<cr>
+nmap <leader>S <plug>(YCMHover)
 nnoremap <leader>s :%s/
 nnoremap <leader>a :Ack<cr>
 nnoremap <leader>X :x<cr>
