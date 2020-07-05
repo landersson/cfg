@@ -147,9 +147,14 @@ fi
 
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 
-# run system specific bashrc if found
+# run arch specific bashrc if found
 if [ -e $HOME/.bashrc.`uname -s` ]; then
     . $HOME/.bashrc.`uname -s` 
+fi
+
+# run host specific bashrc if found
+if [ -e $HOME/.bashrc.${HOSTNAME} ]; then
+    . $HOME/.bashrc.${HOSTNAME}
 fi
 
 

@@ -50,6 +50,7 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'peterhoeg/vim-qml'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
@@ -122,11 +123,11 @@ if has("gui_running")
         set guifont=Menlo-Regular:h14
     endif
     if hostname() == "whisky"
-        set guifont=Monospace\ 12
+        set guifont=Monospace\ 14
     endif
     if hostname() == "ryzen"
-        "set guifont=DejaVu\ Sans\ Mono\ 10
-        set guifont=Monospace\ 10
+        set guifont=DejaVu\ Sans\ Mono\ 10
+        "set guifont=Monospace\ 11
     endif
 	" no toolbar, no menu
 	set guioptions-=T
@@ -142,8 +143,6 @@ else
     silent! colorscheme iceberg
 endif
 
-" turn syntax highlighting on
-"silent! colorscheme blueberry
 syntax on
 
 " highlight matching angle brackets
@@ -187,8 +186,7 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-"autocmd BufWritePre *.{py,cc,h} :call <SID>StripTrailingWhitespaces()
-"autocmd BufWrite *.py :Autoformat
+autocmd BufWrite *.py :Autoformat
 autocmd bufreadpre *.py setlocal textwidth=96
 
 
@@ -267,7 +265,6 @@ let g:ctrlp_match_current_file = 1
 let g:pydoc_cmd = 'python3 -m pydoc'
 let g:python_highlight_all = 1
 let g:rustfmt_autosave = 1
-
 
 "--- Keyboard mapping ------------------------------------------------------------  
 
