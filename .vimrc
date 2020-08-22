@@ -26,8 +26,11 @@ Plug 'glts/vim-textobj-comment'
 Plug 'cocopon/iceberg.vim'
 Plug 'arcticicestudio/nord-vim'
 
+" Enable comma separated function parameters as vim text objects
 Plug 'sgur/vim-textobj-parameter'
 Plug 'ctrlpvim/ctrlp.vim'
+
+" Reorder delimeted arguments using g< and g>
 Plug 'machakann/vim-swap'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
@@ -223,10 +226,13 @@ let g:ale_cpp_clangtidy_checks = [ "-clang-analyzer*", "readability-*", "-readab
 let g:ale_python_flake8_options = '--max-line-length=98'
 "let g:ale_rust_rustc_options="--emit metadata"
 let g:ale_rust_rustc_options=""
+let g:ale_cpp_clangd_executable = 'clangd'
+"let g:ale_cpp_clangd_options = '--log=verbose --input-mirror-file=/tmp/proto.txt'
 "let g:ale_rust_rustfmt_options
 
 
 " YCM options
+let g:ycm_clangd_binary_path = '/usr/bin/clangd' " YCM embedded clangd crashes on the SCG source tree
 let g:ycm_always_populate_loc_list = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_show_diagnostics_ui = 0
