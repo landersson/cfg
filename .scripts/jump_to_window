@@ -1,0 +1,140 @@
+#!/bin/env python3
+
+import os
+import subprocess
+import argparse
+import pathlib
+from collections import namedtuple
+
+
+Rectangle = namedtuple('Rectangle', 'xmin ymin xmax ymax')
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+        "--name", default=None, type=str, help="Regexp to match against window name"
+        )
+parser.add_argument(
+        "--monitor", default=None,  type=str, help="Match windows on given monitor"
+        )
+parser.add_argument(
+        "--previous", default=None, action='store_true', help="Match windows on given monitor"
+        )
+args = parser.parse_args()
+
+hist_file = os.path.join(pathlib.Path.home(), ".winhist")
+
+def xdotool(args):
+    cp = subprocess.run(["xdotool"] + args, stdout=subprocess.PIPE)
+    return cp.stdout.decode().strip()
+
+def get_active_window_id():
+    return xdotool(["getactivewindow"])
+
+
+def parse_monitor_dims(s):
+
+    fs = s.split('+')
+    sizes = fs[0].split('x')
+    abs_x = int(fs[1])
+    abs_y = int(fs[2])
+
+    w = int(sizes[0].split('/')[0])
+    h = int(sizes[1].split('/')[0])
+
+    return Rectangle(abs_x, abs_y, abs_x + w - 1, abs_y + h - 1)
+    # return ((w,h), (abs_x, abs_y))
+
+
+def rect_overlap(a, b):  # returns None if rectangles don't intersect
+    dx = min(a.xmax, b.xmax) - max(a.xmin, b.xmin)
+    dy = min(a.ymax, b.ymax) - max(a.ymin, b.ymin)
+    if (dx>=0) and (dy>=0):
+        return dx*dy
+    return 0
+
+
+def parse_monitor_info(m):
+    fields = m.split()
+    name = fields[1].lstrip('*+')
+
+    return (name, parse_monitor_dims(fields[2]))
+
+
+def get_monitor_setup():
+    ms = subprocess.run(["xrandr",  "--listactivemonitors"], stdout=subprocess.PIPE)
+    ms = ms.stdout.decode().strip().split('\n')[1:]
+    ms = [ parse_monitor_info(m) for m in ms ]
+    return { mi[0]: mi[1] for mi in ms }
+
+
+def get_window_geometry(wid):
+    op = xdotool(["getwindowgeometry", wid]).split('\n')
+    pos = tuple([int(n) for n in op[1].split()[1].strip().split(',')])
+    size = tuple([int(n) for n in op[2].split()[1].strip().split('x')])
+    return Rectangle(pos[0], pos[1], pos[0] + size[0], pos[1] + size[1])
+
+
+
+def jump_to_window(wid):
+    desktop = xdotool(["get_desktop_for_window", wid])
+    if not desktop:
+        print("Desktop for window not found")
+        exit(1)
+    xdotool(["set_desktop", desktop])
+    xdotool(["mousemove", "--window", wid, "100", "100"])
+    xdotool(["windowraise", wid])
+
+def save_hist(wid):
+    with open(hist_file, "w") as f:
+        f.write(wid)
+
+if args.previous:
+    try:
+        with open(hist_file, "r") as f:
+            last_id = f.read()
+    except FileNotFoundError as e:
+        print(e)
+        exit(1)
+    print("LID:", last_id)
+    if last_id:
+        jump_to_window(last_id)
+
+    # with open(os.path.join(pathlib.Path.home(), ".winhist")) as f:
+
+monitor = None
+if args.monitor:
+    monitors = get_monitor_setup()
+    monitor = monitors.get(args.monitor, None)
+    if not monitor:
+        print("No monitor named '%s' not found" % args.monitor)
+        exit(1)
+
+window_ids = xdotool(["search", "--name", args.name])
+if not window_ids:
+    print("No window matching name '%s' found" % args.name)
+    exit(1)
+window_ids = window_ids.strip().split('\n')
+
+window_id = None
+if monitor:
+    overlaps = [ (wid, rect_overlap(monitor, get_window_geometry(wid))) for wid in window_ids ]
+    overlaps = list(filter(lambda x: x[1] > 0, overlaps))
+    if not overlaps:
+        print("No mathing windows overlaps with monitor '%s'" % args.monitor)
+        exit(1)
+
+    overlaps.sort(key=lambda x: -x[1])
+    window_id = overlaps[0][0]
+else:
+    window_id = window_ids[-1]
+
+    # for wid in window_ids:
+        # geo = get_window_geometry(wid)
+        # overlap = rect_overlap(monitor, get_window_geometry(wid))
+        # print("ID='%s': %s -> %d" % (wid, geo, overlap))
+
+current_window_id = get_active_window_id()
+print("Current window: %s" % current_window_id)
+print("New window: %s" % str(window_id))
+jump_to_window(window_id)
+save_hist(current_window_id)

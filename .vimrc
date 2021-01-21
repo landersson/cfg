@@ -34,7 +34,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'machakann/vim-swap'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'plytophogy/vim-virtualenv'
+"Plug 'plytophogy/vim-virtualenv'
 Plug 'pangloss/vim-javascript'
 Plug 'rhysd/vim-clang-format'
 Plug 'Chiel92/vim-autoformat'
@@ -132,7 +132,7 @@ if has("gui_running")
         set guifont=Monospace\ 14
     endif
     if hostname() == "ryzen"
-        set guifont=DejaVu\ Sans\ Mono\ 10
+        set guifont=DejaVu\ Sans\ Mono\ 14
         "set guifont=Monospace\ 11
     endif
 	" no toolbar, no menu
@@ -192,7 +192,7 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd BufWrite *.py :Autoformat
+"autocmd BufWrite *.py :Autoformat
 autocmd bufreadpre *.py setlocal textwidth=96
 
 
