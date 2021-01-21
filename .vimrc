@@ -128,6 +128,9 @@ if has("gui_running")
     if hostname() == "whisky"
         set guifont=Monospace\ 14
     endif
+    if hostname() == "5CD041K1WS"
+        set guifont=Monospace\ 14
+    endif
     if hostname() == "ryzen"
         set guifont=DejaVu\ Sans\ Mono\ 10
         "set guifont=Monospace\ 11

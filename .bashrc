@@ -146,6 +146,7 @@ elif [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi
 
 export PYTHONSTARTUP=$HOME/.pythonrc.py
+pathadd $HOME/.local/bin
 
 # run arch specific bashrc if found
 if [ -e $HOME/.bashrc.`uname -s` ]; then
@@ -166,3 +167,4 @@ fi
 if [ -e $HOME/.cargo/env ]; then
     . $HOME/.cargo/env
 fi
+source "$HOME/.cargo/env"
