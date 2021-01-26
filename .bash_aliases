@@ -10,7 +10,7 @@ alias fd=fdfind
 # git aliases
 alias gst='git status'
 alias gco='git commit'
-alias gce='git checkout'
+alias gch='git checkout'
 alias gad='git add'
 alias glg='git log'
 alias gps='git push'
