@@ -1,0 +1,75 @@
+{
+    "editor.minimap.enabled": false,
+    "editor.fontWeight": "normal",
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.defaultInterpreterPath": "python3.12",
+    "vim.leader": ",",
+    "vim.handleKeys": {
+
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-k>": false,
+    },
+    "vim.insertModeKeyBindingsNonRecursive": [],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                ":w"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "leader",
+                "c",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine",
+                "extension.vim_escape"
+            ]
+        }
+    ],
+    "vim.commandLineModeKeyBindingsNonRecursive": [],
+
+    "cmake.showOptionsMovedNotification": false,
+    "window.customTitleBarVisibility": "never",
+    "window.newWindowProfile": "Default",
+    "keyboard.dispatch": "keyCode",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "cmake.parallelJobs": 8,
+    "workbench.colorTheme": "Solarized Light",
+    "workbench.preferredLightColorTheme": "Iceberg Light",
+    "workbench.preferredDarkColorTheme": "Matchalk",
+    "settingsSync.keybindingsPerPlatform": false
+}
