@@ -42,7 +42,17 @@
             "commands": [
                 "editor.action.commentLine"
             ]
-        }
+        },
+        {
+            "before": [
+                "<leader>",
+                "z",
+                "z",
+            ],
+            "commands": [
+                "aichat.selectNextTab"
+            ]
+        },
     ],
     "vim.visualModeKeyBindings": [
         {
@@ -58,6 +68,7 @@
         }
     ],
     "vim.commandLineModeKeyBindingsNonRecursive": [],
+    "vim.camelCaseMotion.enable": true,
 
     "cmake.showOptionsMovedNotification": false,
     "window.customTitleBarVisibility": "never",

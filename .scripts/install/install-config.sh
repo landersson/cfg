@@ -1,4 +1,6 @@
+
 #~/bin/bash
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 CUR_DIR=`pwd`
 TMP_DIR=$(mktemp -d)
@@ -9,6 +11,9 @@ cd $TMP_DIR
 #if [[ `cat /etc/issue | cut -f1 -d" "` == "Ubuntu" ]]; then
     #. $HOME/.scripts/install/ubuntu.sh
 #fi
+
+
+
 
 
 # Install VIM plugins

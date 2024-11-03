@@ -84,5 +84,10 @@
         "key": "ctrl+w z",
         "command": "workbench.action.toggleZenMode",
         "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+w p",
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
     }
 ]
