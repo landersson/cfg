@@ -53,7 +53,8 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'peterhoeg/vim-qml'
-Plug 'plasticboy/vim-markdown'
+Plug 'preservim/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 call plug#end()
 
@@ -114,11 +115,12 @@ endif
 "--- Appearance -------------------------------------------------------------  
 
 " TODO: check if this is necessary
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+"if exists('+termguicolors')
+  "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  "set termguicolors
+"endif
+set termguicolors
 
 
 if has("gui_running")
@@ -134,9 +136,15 @@ if has("gui_running")
     if hostname() == "ryzen.rcv.csiro.au"
         set guifont=Monospace\ 14
     endif
+    if hostname() == "earthquake-bm"
+        set guifont=DejaVu\ Sans\ Mono\ 14
+        "set guifont=Monospace\ 11
+    endif
 	" no toolbar, no menu
 	set guioptions-=T
 	set guioptions-=m
+    " regular text-based tab-bar
+	set guioptions-=e
 	" no righthand scroll bar
 	set guioptions-=r
 	" no left hand scroll bar
@@ -192,7 +200,10 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 
 "autocmd BufWrite *.py :Autoformat
-autocmd bufreadpre *.py setlocal textwidth=96
+autocmd BufWrite *.world :Autoformat
+autocmd BufWrite *.html :Autoformat
+autocmd BufWrite *.js :Autoformat
+"autocmd bufreadpre *.py setlocal textwidth=96
 
 
 " Open help in vertical rather than horizontal split  
@@ -215,6 +226,7 @@ let g:slime_target = "timux"
 let g:slime_paste_file = tempname()
 
 " ALE options
+let g:ale_virtualtext_cursor = 0
 let g:ale_set_balloons = 1
 let g:ale_sign_column_always = 1
 let g:ale_linters = {}
@@ -257,6 +269,7 @@ let g:ycm_language_server =
 \   }
 \ ]
 let g:ycm_auto_hover = ''
+set completeopt-=preview
 
 " clang-format options
 "let g:clang_format#auto_formatexpr = 1
@@ -358,3 +371,8 @@ function! ReturnHighlightTerm(group, term)
    " Find the term we're looking for
    return matchstr(output, a:term.'=\zs\S*')
 endfunction
+
+function OpenMarkdownPreview (url)
+    execute "silent ! google-chrome --new-window " . a:url
+endfunction
+let g:mkdp_browserfunc = 'OpenMarkdownPreview'
