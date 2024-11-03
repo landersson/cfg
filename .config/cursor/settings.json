@@ -47,10 +47,9 @@
             "before": [
                 "<leader>",
                 "z",
-                "z",
             ],
             "commands": [
-                "aichat.selectNextTab"
+                "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
             ]
         },
     ],
@@ -82,5 +81,6 @@
     "workbench.colorTheme": "Solarized Light",
     "workbench.preferredLightColorTheme": "Iceberg Light",
     "workbench.preferredDarkColorTheme": "Matchalk",
-    "settingsSync.keybindingsPerPlatform": false
+    "settingsSync.keybindingsPerPlatform": false,
+    "workbench.preferredHighContrastColorTheme": "Iceberg Light"
 }

@@ -2,7 +2,7 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 if [[ `uname -s` == "Darwin" ]]; then
-    CONFIG_DIR=~/Library/Application\ Support/Cursor/
+    CONFIG_DIR=~/Library/Application\ Support/
 elif [[ `uname -s` == "Linux" ]]; then
     CONFIG_DIR=~/.config/
 else

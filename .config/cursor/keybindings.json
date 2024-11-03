@@ -89,5 +89,10 @@
         "key": "ctrl+w p",
         "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
         "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+w b",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!activeEditorGroupEmpty"
     }
 ]
