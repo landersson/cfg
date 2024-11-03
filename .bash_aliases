@@ -23,3 +23,6 @@ alias v=view
 
 
 alias mvim=/Applications/MacVim.app/Contents/bin/mvim
+
+# ROS2 Related
+alias iron='source /opt/ros/iron/setup.bash'

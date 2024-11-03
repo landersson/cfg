@@ -168,3 +168,6 @@ if [ -e $HOME/.cargo/env ]; then
     . $HOME/.cargo/env
 fi
 source "$HOME/.cargo/env"
+
+# for the "bat" command (cat replacement)
+export BAT_THEME=ansi
