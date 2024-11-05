@@ -133,9 +133,8 @@ if has("gui_running")
     if hostname() == "5CD041K1WS"
         set guifont=Monospace\ 14
     endif
-    if hostname() == "ryzen"
-        set guifont=DejaVu\ Sans\ Mono\ 14
-        "set guifont=Monospace\ 11
+    if hostname() == "ryzen.rcv.csiro.au"
+        set guifont=Monospace\ 14
     endif
     if hostname() == "earthquake-bm"
         set guifont=DejaVu\ Sans\ Mono\ 14
