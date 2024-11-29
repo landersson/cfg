@@ -1,0 +1,66 @@
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x383c44"
+blue = "0x6890d8"
+cyan = "0x55a0b0"
+green = "0x70a880"
+magenta = "0xa088d0"
+red = "0xbf5848"
+white = "0xffffff"
+yellow = "0xd0a654"
+
+[colors.cursor]
+cursor = "0xe00000"
+text = "0x000000"
+
+[colors.normal]
+black = "0x181c24"
+blue = "0x6890d8"
+cyan = "0x55a0b0"
+green = "0x609868"
+magenta = "0xa088d0"
+red = "0xbf5848"
+white = "0xb8b8b8"
+yellow = "0xd0a654"
+
+[colors.primary]
+background = "0x1c1a1c"
+foreground = "0xa0a0a0"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 16.0
+
+[font.bold]
+#family = "Menlo"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+#family = "Menlo"
+
+[font.normal]
+#family = "Menlo"
+
+[font.offset]
+x = 0
+y = 0
+
+[window]
+decorations = "full"
+
+[window.dimensions]
+columns = 200
+lines = 64
+
+[window.padding]
+x = 2
+y = 2

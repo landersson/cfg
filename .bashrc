@@ -167,5 +167,8 @@ if [ -e $HOME/.cargo/env ]; then
     . $HOME/.cargo/env
 fi
 
+export ROS_DOMAIN_ID=64
+
 # for the "bat" command (cat replacement)
 export BAT_THEME=ansi
+
