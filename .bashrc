@@ -1,4 +1,3 @@
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -143,10 +142,13 @@ if [ -f $HOME/.local/bin/virtualenvwrapper.sh ]; then
     source $HOME/.local/bin/virtualenvwrapper.sh
 elif [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
+elif [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 pathadd $HOME/.local/bin
+pathadd $HOME/bin
 
 # run arch specific bashrc if found
 if [ -e $HOME/.bashrc.`uname -s` ]; then
@@ -167,3 +169,4 @@ fi
 if [ -e $HOME/.cargo/env ]; then
     . $HOME/.cargo/env
 fi
+
