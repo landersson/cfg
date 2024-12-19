@@ -105,11 +105,6 @@ font:
   # `WINIT_HIDPI_FACTOR=1.0 alacritty` to scale the font.
   #scale_with_dpi: true
 
-  # OS X only: use thin stroke font rendering. Thin strokes are suitable
-  # for retina displays, but for non-retina you probably want this set to
-  # false.
-  use_thin_strokes: true
-
 # Should display the render timer
 debug.render_timer: false
 
@@ -305,6 +300,9 @@ colors:
     #cyan:    '0x87d7d7'
     #white:   '0xe4e4e4'
 
+visual_bell:
+  animation: EaseOutExpo
+  duration: 0
 
 # Background opacity
 window.opacity: 1.0
@@ -421,6 +419,7 @@ key_bindings:
   - { key: Paste,                   action: Paste                        }
   - { key: Copy,                    action: Copy                         }
   - { key: Q,        mods: Command, action: Quit                         }
+  - { key: Q,        mods: Control, chars:  "\x11"                               }
   - { key: W,        mods: Command, action: Quit                         }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
   - { key: Key0,     mods: Control, action: ResetFontSize                }

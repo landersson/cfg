@@ -1,0 +1,92 @@
+{
+    "editor.minimap.enabled": false,
+    "editor.fontWeight": "normal",
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.defaultInterpreterPath": "python3.12",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+    "vim.leader": ",",
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-k>": false,
+    },
+    "vim.insertModeKeyBindingsNonRecursive": [],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                ":w"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "z",
+            ],
+            "commands": [
+                "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "leader",
+                "c",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine",
+                "extension.vim_escape"
+            ]
+        }
+    ],
+    "vim.commandLineModeKeyBindingsNonRecursive": [],
+    "vim.camelCaseMotion.enable": true,
+    "cmake.showOptionsMovedNotification": false,
+    "window.customTitleBarVisibility": "never",
+    "window.newWindowProfile": "Default",
+    "keyboard.dispatch": "keyCode",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "cmake.parallelJobs": 8,
+    "workbench.colorTheme": "Matchalk",
+    "workbench.preferredLightColorTheme": "Iceberg Light",
+    "workbench.preferredDarkColorTheme": "Matchalk",
+    "workbench.preferredHighContrastColorTheme": "Matchalk",
+    "settingsSync.keybindingsPerPlatform": false,
+    "workbench.preferredHighContrastColorTheme": "Iceberg Light",
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    }
+}

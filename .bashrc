@@ -160,7 +160,6 @@ if [ -e $HOME/.bashrc.${HOSTNAME} ]; then
     . $HOME/.bashrc.${HOSTNAME}
 fi
 
-
 # run local bashrc if found
 if [ -e $HOME/.bashrc.local ]; then
     . $HOME/.bashrc.local 
@@ -170,3 +169,7 @@ if [ -e $HOME/.cargo/env ]; then
     . $HOME/.cargo/env
 fi
 
+export ROS_DOMAIN_ID=64
+
+# for the "bat" command (cat replacement)
+export BAT_THEME=ansi
