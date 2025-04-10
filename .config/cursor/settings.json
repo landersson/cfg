@@ -3,9 +3,12 @@
     "editor.fontWeight": "normal",
     "security.workspace.trust.untrustedFiles": "open",
     "python.defaultInterpreterPath": "python3.12",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
     "vim.leader": ",",
     "vim.handleKeys": {
-
         "<C-d>": true,
         "<C-s>": false,
         "<C-z>": false,
@@ -68,7 +71,6 @@
     ],
     "vim.commandLineModeKeyBindingsNonRecursive": [],
     "vim.camelCaseMotion.enable": true,
-
     "cmake.showOptionsMovedNotification": false,
     "window.customTitleBarVisibility": "never",
     "window.newWindowProfile": "Default",
@@ -81,6 +83,11 @@
     "workbench.colorTheme": "Matchalk",
     "workbench.preferredLightColorTheme": "Iceberg Light",
     "workbench.preferredDarkColorTheme": "Matchalk",
+    "workbench.preferredHighContrastColorTheme": "Matchalk",
     "settingsSync.keybindingsPerPlatform": false,
-    "workbench.preferredHighContrastColorTheme": "Iceberg Light"
+    "workbench.preferredHighContrastColorTheme": "Iceberg Light",
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "editor.formatOnSave": true
 }
