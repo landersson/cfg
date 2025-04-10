@@ -78,7 +78,7 @@
         "workbench.action.tasks.runTask"
     ],
     "cmake.parallelJobs": 8,
-    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorTheme": "Matchalk",
     "workbench.preferredLightColorTheme": "Iceberg Light",
     "workbench.preferredDarkColorTheme": "Matchalk",
     "settingsSync.keybindingsPerPlatform": false,
