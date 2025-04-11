@@ -94,5 +94,13 @@
         "key": "ctrl+w b",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+w h",
+        "command": "workbench.action.closePanel"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "composerMode.agent"
     }
 ]

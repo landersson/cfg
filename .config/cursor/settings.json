@@ -1,6 +1,7 @@
 {
     "editor.minimap.enabled": false,
     "editor.fontWeight": "normal",
+    "editor.formatOnSave": true,
     "security.workspace.trust.untrustedFiles": "open",
     "python.defaultInterpreterPath": "python3.12",
     "[python]": {
@@ -87,6 +88,6 @@
     "settingsSync.keybindingsPerPlatform": false,
     "workbench.preferredHighContrastColorTheme": "Iceberg Light",
     "[c]": {
-        "editor.defaultFormatter": "xaver.clang-format"
+        "editor.defaultFormatter": "xaver.clang-format",
     }
 }
