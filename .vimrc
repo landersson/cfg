@@ -54,7 +54,8 @@ Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'peterhoeg/vim-qml'
 Plug 'preservim/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
 call plug#end()
 
@@ -136,8 +137,9 @@ if has("gui_running")
     if hostname() == "ryzen.rcv.csiro.au"
         set guifont=Monospace\ 14
     endif
-    if hostname() == "earthquake-bm"
-        set guifont=DejaVu\ Sans\ Mono\ 14
+    if hostname() == "fenrir-bm"
+        "set guifont=DejaVu\ Sans\ Mono\ 14
+        set guifont=Monospace\ 14
         "set guifont=Monospace\ 11
     endif
 	" no toolbar, no menu
@@ -201,7 +203,7 @@ endfun
 
 "autocmd BufWrite *.py :Autoformat
 autocmd BufWrite *.world :Autoformat
-autocmd BufWrite *.html :Autoformat
+"autocmd BufWrite *.html :autoformat
 autocmd BufWrite *.js :Autoformat
 "autocmd bufreadpre *.py setlocal textwidth=96
 
