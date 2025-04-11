@@ -100,7 +100,7 @@
         "command": "workbench.action.closePanel"
     },
     {
-        "key": "ctrl+i",
+        "key": "cmd+i",
         "command": "composerMode.agent"
     }
 ]

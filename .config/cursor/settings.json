@@ -88,6 +88,7 @@
     "settingsSync.keybindingsPerPlatform": false,
     "workbench.preferredHighContrastColorTheme": "Iceberg Light",
     "[c]": {
-        "editor.defaultFormatter": "xaver.clang-format",
-    }
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "editor.formatOnSave": true
 }
