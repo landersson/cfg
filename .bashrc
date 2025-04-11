@@ -96,7 +96,7 @@ fi
 # functions
 
 eh_grep() {
-    grep $1 ~/.bash_eternal_history
+    grep -a $1 ~/.bash_eternal_history
 }
 
 pathadd() {
