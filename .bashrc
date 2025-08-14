@@ -55,7 +55,7 @@ if [[ "$TERM" != "dumb" ]]; then
             DC=/opt/local/bin/gdircolors
             GREP=/opt/local/bin/ggrep
         else
-            echo "Darwin: GNU tools not found"
+            #echo "Darwin: GNU tools not found"
             alias ls="ls -p -G" 
             export LSCOLORs=gxfxcxdxbxegedabagacad
             export LS_COLOrS='ex=01;37'
