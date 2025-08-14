@@ -25,10 +25,21 @@ return {
         ensure_installed = {
           "lua_ls",
           "clangd",
+          "bashls",
         }
       })
     end
   },
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = { 'shfmt' }
+      })
+    end
+  },
+
+
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -36,6 +47,7 @@ return {
 
       lspconfig.lua_ls.setup({})
       lspconfig.clangd.setup({})
+      lspconfig.bashls.setup({})
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
