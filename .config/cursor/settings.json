@@ -90,5 +90,7 @@
     "[c]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "git.openRepositoryInParentFolders": "never",
+    "terminal.integrated.defaultProfile.osx": "bash"
 }
