@@ -51,3 +51,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.keymap.set('n', '<leader>a', function()
+  local word = vim.fn.expand('<cword>')
+  if word == '' then
+    require('telescope.builtin').live_grep()
+  else
+    require('telescope.builtin').live_grep({
+      default_text = '\\b' .. word .. '\\b'
+    })
+  end
+end, { desc = 'Live grep word under cursor (whole word)' })
