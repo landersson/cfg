@@ -10,8 +10,15 @@ vim.keymap.set({ "n" }, "<leader>w", ":w!<cr>", { remap = true })
 -- Edit file in the same directory
 vim.keymap.set('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {})
 vim.keymap.set('n', '<leader>X', ':x<cr>', {})
-vim.keymap.set('n', '<leader>j', ':e #<cr>', {})
 vim.keymap.set('n', '<leader>z', ':b#<cr>', {})
+vim.keymap.set('n', '<leader>q', ':bp|bd #<cr>', {})
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
 
 vim.o.wildmode = 'longest,list,full'
 vim.o.wildmenu = true
@@ -19,6 +26,8 @@ vim.o.wildmenu = true
 vim.o.number = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
+
+
 
 vim.opt.matchpairs:append("<:>")
 
