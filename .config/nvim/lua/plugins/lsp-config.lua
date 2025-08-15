@@ -45,7 +45,13 @@ return {
     config = function()
       local lspconfig = require('lspconfig')
 
-      lspconfig.lua_ls.setup({})
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = { disable = { 'missing-fields' } }
+          },
+        },
+      })
       lspconfig.clangd.setup({})
       lspconfig.bashls.setup({})
       vim.api.nvim_create_autocmd('LspAttach', {

@@ -62,3 +62,4 @@ vim.keymap.set('n', '<leader>a', function()
     })
   end
 end, { desc = 'Live grep word under cursor (whole word)' })
+
