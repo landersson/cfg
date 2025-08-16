@@ -14,8 +14,10 @@ vim.keymap.set('n', '<leader>z', ':b#<cr>', {})
 vim.keymap.set('n', '<leader>q', ':bp|bd #<cr>', {})
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end,
+  { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end,
+  { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
@@ -27,7 +29,8 @@ vim.o.number = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-
+-- Stop the sign gutter from opening/closing
+vim.opt.signcolumn = "yes"
 
 vim.opt.matchpairs:append("<:>")
 
@@ -72,3 +75,13 @@ vim.keymap.set('n', '<leader>a', function()
   end
 end, { desc = 'Live grep word under cursor (whole word)' })
 
+-- Autocommand to format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),
+  callback = function(args)
+    -- Only format if an LSP client is attached to the buffer
+    if #vim.lsp.get_clients() > 0 then
+      vim.lsp.buf.format({ async = false }) -- Set async = false for synchronous formatting
+    end
+  end,
+})

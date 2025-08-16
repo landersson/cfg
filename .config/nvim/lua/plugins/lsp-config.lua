@@ -1,12 +1,13 @@
 return {
   {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
+    -- `lazydev` configures lua lsp for your neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of neovim apis
     'folke/lazydev.nvim',
+    enabled = true,
     ft = 'lua',
     opts = {
       library = {
-        -- Load luvit types when the `vim.uv` word is found
+        -- load luvit types when the `vim.uv` word is found
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
@@ -26,7 +27,9 @@ return {
           "lua_ls",
           "clangd",
           "bashls",
-        }
+          "ruff",
+        },
+        automatic_enable = false, --disable
       })
     end
   },
@@ -48,7 +51,10 @@ return {
       lspconfig.lua_ls.setup({
         settings = {
           Lua = {
-            diagnostics = { disable = { 'missing-fields' } }
+            diagnostics = {
+              disable = { 'missing-fields' },
+              globals = { 'vim' }
+            }
           },
         },
       })
@@ -65,7 +71,6 @@ return {
           vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
           vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
           vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-          vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, opts)
           vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
           vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
           vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
@@ -77,7 +82,7 @@ return {
           vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
           vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
           vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-          vim.keymap.set('n', '<space>f', function()
+          vim.keymap.set('n', '<leader>f', function()
             vim.lsp.buf.format { async = true }
           end, opts)
         end,
