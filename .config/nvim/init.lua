@@ -21,7 +21,6 @@ vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = tr
 vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-
 vim.o.wildmode = 'longest,list,full'
 vim.o.wildmenu = true
 
@@ -87,3 +86,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+
+if vim.fn.has("mac") == 1 then
+  -- Your macOS-specific Neovim commands here
+  vim.o.shell = "/opt/homebrew/bin/bash"
+end
