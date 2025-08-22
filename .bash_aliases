@@ -1,4 +1,3 @@
-
 command -v exa >/dev/null && alias ls=exa
 # some more ls aliases
 alias ll='ls -l'
@@ -20,6 +19,8 @@ alias gbr='git branch'
 alias tmux='tmux -2'
 alias v=view
 
+alias cfs='cfg status'
+alias cfd='cfg diff'
 
 alias mvim=/Applications/MacVim.app/Contents/bin/mvim
 

@@ -7,8 +7,10 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Gentle Dark",
+  "theme": "One Dark",
   "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 16
+  "ui_font_size": 18,
+  "ui_font_family": "Zed Plex Mono",
+  "buffer_font_family": "Zed Plex Mono",
+  "buffer_font_size": 18
 }
