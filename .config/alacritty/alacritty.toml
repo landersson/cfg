@@ -1,6 +1,12 @@
+
+
 live_config_reload = true
-[shell]
-program = "/opt/homebrew/bin/bash"
+import = [
+"~/.config/alacritty/alacritty.defaults.toml",
+"~/.config/alacritty/alacritty.os.toml",
+"~/.config/alacritty/alacritty.host.toml",
+]
+
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -36,8 +42,6 @@ foreground = "0xa0a0a0"
 [env]
 TERM = "xterm-256color"
 
-[font]
-size = 18.0
 
 [font.bold]
 family = "Menlo"
@@ -66,3 +70,4 @@ lines = 64
 [window.padding]
 x = 2
 y = 2
+
