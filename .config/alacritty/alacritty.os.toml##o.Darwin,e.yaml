@@ -1,3 +1,13 @@
 
 [shell]
 program = "/opt/homebrew/bin/bash"
+
+[font.bold]
+family = "Menlo"
+
+[font.italic]
+family = "Menlo"
+
+[font.normal]
+family = "Menlo"
+
