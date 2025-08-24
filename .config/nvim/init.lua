@@ -12,6 +12,8 @@ vim.keymap.set('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {})
 vim.keymap.set('n', '<leader>X', ':x<cr>', {})
 vim.keymap.set('n', '<leader>z', ':b#<cr>', {})
 vim.keymap.set('n', '<leader>q', ':bp|bd #<cr>', {})
+vim.keymap.set('n', '<leader>.', ':tabclose<cr>', {})
+vim.keymap.set('n', '<leader>v', ':DiffviewOpen -uno<cr>', {})
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end,
@@ -29,7 +31,8 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Stop the sign gutter from opening/closing
-vim.opt.signcolumn = "yes"
+-- vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "number" -- show gutter signs in number columns
 
 vim.opt.matchpairs:append("<:>")
 

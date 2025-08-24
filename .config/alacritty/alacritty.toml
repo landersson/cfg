@@ -55,6 +55,8 @@ family = "Menlo"
 
 [font.normal]
 family = "Menlo"
+# cursorfamily = "ZedMono Nerd Font Mono"
+# style = "Regular"
 
 [font.offset]
 x = 0
@@ -70,4 +72,3 @@ lines = 64
 [window.padding]
 x = 2
 y = 2
-
