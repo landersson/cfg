@@ -14,6 +14,7 @@ vim.keymap.set('n', '<leader>z', ':b#<cr>', {})
 vim.keymap.set('n', '<leader>q', ':bp|bd #<cr>', {})
 vim.keymap.set('n', '<leader>.', ':tabclose<cr>', {})
 vim.keymap.set('n', '<leader>v', ':DiffviewOpen -uno<cr>', {})
+vim.keymap.set('n', '<leader>l', ':Lazy<cr>', {})
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end,
@@ -94,6 +95,8 @@ if vim.fn.has("mac") == 1 then
   -- Your macOS-specific Neovim commands here
   vim.o.shell = "/opt/homebrew/bin/bash"
 end
+
+--vim.lsp.set_log_level("debug")
 
 -- Neovide configuration
 if vim.g.neovide then

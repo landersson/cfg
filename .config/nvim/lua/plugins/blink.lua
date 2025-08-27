@@ -1,6 +1,7 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
+  enabled = true,
   dependencies = { 'rafamadriz/friendly-snippets' },
 
   -- use a release tag to download pre-built binaries
@@ -25,7 +26,8 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'super-tab' },
+    -- keymap = { preset = 'super-tab' },
+    keymap = { preset = 'default' },
 
     signature = { enabled = true },
 
@@ -44,6 +46,10 @@ return {
         }
       }
     },
+    -- Disable blink completion for the nvim command line for now
+    cmdline = {
+      enabled = false,
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -51,9 +57,12 @@ return {
     --   default = { 'lsp', 'path', 'snippets', 'buffer' },
     -- },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+      default = { 'lsp', 'path', 'buffer', 'lazydev' },
+      -- default = { 'buffer', 'lsp' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+        -- This will include buffer completions even if LSP returns non-zero completion candidates
+        lsp = { fallbacks = {} },
       },
     },
 
