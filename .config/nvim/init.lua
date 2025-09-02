@@ -1,10 +1,14 @@
 require("config.lazy")
 
 vim.keymap.set("i", "jk", "<Esc>", { remap = true })
-vim.keymap.set({ "n", "v" }, "<leader>c", "gc", { remap = true })
+
+-- Toggle comment status for entire selection
 vim.keymap.set({ "n" }, "<leader>cc", "gcc", { remap = true })
 
--- Save file shortcut
+-- Invert comment status individually for all lines in selection
+vim.keymap.set({ "n", "v" }, "<leader>ci", ":normal gcc<cr>", { remap = true })
+
+-- Write file
 vim.keymap.set({ "n" }, "<leader>w", ":w!<cr>", { remap = true })
 
 -- Edit file in the same directory
@@ -12,7 +16,7 @@ vim.keymap.set('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {})
 vim.keymap.set('n', '<leader>X', ':x<cr>', {})
 vim.keymap.set('n', '<leader>z', ':b#<cr>', {})
 vim.keymap.set('n', '<leader>q', ':bp|bd #<cr>', {})
-vim.keymap.set('n', '<leader>.', ':tabclose<cr>', {})
+vim.keymap.set('n', '<leader>.', ':tabclose<cr>', { remap = true })
 vim.keymap.set('n', '<leader>v', ':DiffviewOpen -uno<cr>', {})
 vim.keymap.set('n', '<leader>l', ':Lazy<cr>', {})
 
