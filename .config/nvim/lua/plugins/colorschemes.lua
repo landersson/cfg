@@ -11,14 +11,15 @@ return {
       vim.g.nord_italic = false
       vim.g.nord_uniform_diff_background = true
       vim.g.nord_bold = false
-      vim.cmd.colorscheme('nord')
+      --vim.cmd.colorscheme('nord')
     end
   },
   {
     "oahlen/iceberg.nvim",
+    priority = 1,
     name = "iceberg",
     config = function()
-      -- vim.cmd.colorscheme('iceberg')
+      vim.cmd.colorscheme('iceberg')
     end
   },
   {

@@ -26,6 +26,8 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    'slugbyte/lackluster.nvim',
+    'kvrohit/substrata.nvim',
 
     { import = "plugins" },
   },
