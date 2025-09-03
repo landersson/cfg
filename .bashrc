@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -40,30 +40,29 @@ export PS1="\[\e[29;1m\]\h:\[\e[0m\]\W:>"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm* | rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
-    ;;
+*) ;;
 esac
 
 # enable color support of ls and also add handy aliases
 if [[ "$TERM" != "dumb" ]]; then
-    if [[ `uname` == "Darwin" ]]; then
+    if [[ $(uname) == "Darwin" ]]; then
         if [ -x /opt/local/bin/gls ]; then
             LS=/opt/local/bin/gls
             DC=/opt/local/bin/gdircolors
             GREP=/opt/local/bin/ggrep
         else
             #echo "Darwin: GNU tools not found"
-            alias ls="ls -p -G" 
+            alias ls="ls -p -G"
             export LSCOLORs=gxfxcxdxbxegedabagacad
             export LS_COLOrS='ex=01;37'
         fi
     else
         LS="/bin/ls"
-        DC=`which dircolors`
-        GREP=`which grep`
+        DC=$(which dircolors)
+        GREP=$(which grep)
     fi
 
     if [ -x "$DC" ]; then
@@ -74,12 +73,6 @@ if [[ "$TERM" != "dumb" ]]; then
         alias egrep='egrep --color=auto'
     fi
 fi
-
-# config managment
-alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -118,13 +111,12 @@ ehgrep() {
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
-
 
 # source mac-ports git-completion if found
 if [ -f /opt/local//share/git/contrib/completion/git-completion.bash ]; then
@@ -135,9 +127,9 @@ export EDITOR=vim
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=`which python3`
-export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
-export VIRTUALENV_PYTHON=`which python3`
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
+export VIRTUALENV_PYTHON=$(which python3)
 if [ -f $HOME/.local/bin/virtualenvwrapper.sh ]; then
     source $HOME/.local/bin/virtualenvwrapper.sh
 elif [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
@@ -151,8 +143,8 @@ pathadd $HOME/.local/bin
 pathadd $HOME/bin
 
 # run arch specific bashrc if found
-if [ -e $HOME/.bashrc.`uname -s` ]; then
-    . $HOME/.bashrc.`uname -s` 
+if [ -e $HOME/.bashrc.$(uname -s) ]; then
+    . $HOME/.bashrc.$(uname -s)
 fi
 
 # run host specific bashrc if found
@@ -162,7 +154,7 @@ fi
 
 # run local bashrc if found
 if [ -e $HOME/.bashrc.local ]; then
-    . $HOME/.bashrc.local 
+    . $HOME/.bashrc.local
 fi
 
 if [ -e $HOME/.cargo/env ]; then

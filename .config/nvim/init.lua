@@ -52,6 +52,7 @@ vim.opt.cursorlineopt = "number"
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Clear search pattern highlight
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Sync clipboard between OS and Neovim.
@@ -73,6 +74,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Run Telescope live-grep on word under cursor
 vim.keymap.set('n', '<leader>a', function()
   local word = vim.fn.expand('<cword>')
   if word == '' then
@@ -96,7 +98,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 if vim.fn.has("mac") == 1 then
-  -- Your macOS-specific Neovim commands here
+  -- MacOS-specific config here
   vim.o.shell = "/opt/homebrew/bin/bash"
 end
 

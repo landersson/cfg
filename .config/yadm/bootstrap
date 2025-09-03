@@ -1,6 +1,8 @@
+# vi: ft=bash
+
 if grep -q "ID=ubuntu" /etc/os-release; then
   # Assuming Ubuntu 24.04
-  sudo apt install ripgrep fd-find
+  sudo apt install ripgrep fd-find xclip
 
   # C++ standard library needed for clangd to work correctly with C++ code
   sudo apt install libstdc++-14-dev

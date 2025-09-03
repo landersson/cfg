@@ -10,8 +10,8 @@ return {
           keymaps = {
             ["af"] = "@function.outer",
             ["if"] = "@function.inner",
-            ["ap"] = "@parameter.outer",
-            ["ip"] = "@parameter.inner",
+            ["a,"] = "@parameter.outer",
+            ["i,"] = "@parameter.inner",
             ["ac"] = "@class.outer",
           },
         },
