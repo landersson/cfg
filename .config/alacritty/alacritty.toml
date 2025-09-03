@@ -4,7 +4,7 @@ import = [
     "~/.config/alacritty/alacritty.defaults.toml",
     "~/.config/alacritty/alacritty.os.toml",
     "~/.config/alacritty/alacritty.host.toml",
-    "~/.config/alacritty/themes/kolmila.toml"
+    "~/.config/alacritty/colors/kolmila.toml"
 ]
 
 [env]
