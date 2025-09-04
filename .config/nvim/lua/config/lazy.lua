@@ -28,6 +28,8 @@ require("lazy").setup({
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
     'slugbyte/lackluster.nvim',
     'kvrohit/substrata.nvim',
+    'uga-rosa/ccc.nvim',
+    'brenoprata10/nvim-highlight-colors',
 
     { import = "plugins" },
   },
