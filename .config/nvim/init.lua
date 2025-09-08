@@ -86,6 +86,16 @@ vim.keymap.set('n', '<leader>a', function()
   end
 end, { desc = 'Live grep word under cursor (whole word)' })
 
+-- Hack to reload in-tree substrata color theme... for theme dev
+vim.keymap.set('n', '<leader><space>', function()
+  local word = vim.fn.expand('<cword>')
+  package.loaded['themes.substrata.colors'] = nil
+  package.loaded['themes.substrata.config'] = nil
+  package.loaded['themes.substrata'] = nil
+  require('themes.substrata').colorscheme()
+  print(word)
+end, { desc = 'Reload colorscheme' })
+
 -- Autocommand to format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),

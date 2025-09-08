@@ -27,9 +27,19 @@ require("lazy").setup({
     -- import your plugins
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
     'slugbyte/lackluster.nvim',
-    'kvrohit/substrata.nvim',
     'uga-rosa/ccc.nvim',
     'brenoprata10/nvim-highlight-colors',
+
+    -- Local, modified substrata theme
+    {
+      dir = vim.fn.stdpath("config") .. "/lua/themes/substrata",
+      name = "substrata-local",
+      lazy = false,
+      priority = 1000,
+      config = function()
+        require("themes.substrata").colorscheme()
+      end,
+    },
 
     { import = "plugins" },
   },

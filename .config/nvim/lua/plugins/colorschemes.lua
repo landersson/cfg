@@ -34,33 +34,4 @@ return {
       vim.cmd.colorscheme('everforest')
     end
   },
-  -- { "EdenEast/nightfox.nvim" }, -- lazy
-  -- { "catppuccin/nvim", name = "catppuccin" },
-  --     {
-  --   "thesimonho/kanagawa-paper.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  -- },
-  -- {
-  --     "mcauley-penney/ice-cave.nvim",
-  --     config = function()
-  --         vim.cmd.colorscheme("ice-cave")
-  --     end,
-  --     priority = 1000
-  -- }
-  -- {
-  --   'projekt0n/github-nvim-theme',
-  --   name = 'github-theme',
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     require('github-theme').setup({
-  --       -- ...
-  --     })
-  --
-  --     vim.cmd('colorscheme github_dark')
-  --   end,
-  --
-  --   }
 }
