@@ -4,5 +4,11 @@
     "bindings": {
       "j k": "vim::SwitchToNormalMode"
     }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      ", w": "workspace::Save"
+    }
   }
 ]
