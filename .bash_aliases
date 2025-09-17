@@ -33,6 +33,7 @@ alias mvim=/Applications/MacVim.app/Contents/bin/mvim
 
 alias ryz='ssh -4 ryzen.rcv.csiro.au'
 alias rok='ssh -4 rocky.rcv.csiro.au'
+alias lbu='ssh -4 lightingbug-bm.nexus.csiro.au'
 
 # ROS2 Related
 alias jazzy='source /opt/ros/jazzy/setup.bash'

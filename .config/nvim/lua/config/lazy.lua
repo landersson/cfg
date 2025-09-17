@@ -29,6 +29,7 @@ require("lazy").setup({
     'slugbyte/lackluster.nvim',
     'uga-rosa/ccc.nvim',
     'brenoprata10/nvim-highlight-colors',
+    { "echasnovski/mini.diff", opts = {} },
 
     -- Local, modified substrata theme
     {

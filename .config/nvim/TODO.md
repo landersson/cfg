@@ -10,3 +10,4 @@ X Usable terminal emulator
 * Make blink more like YCM
 * Try https://github.com/justinmk/vim-sneak
 * Plugin for rearranging argument order
+* Tweak substrata color theme
