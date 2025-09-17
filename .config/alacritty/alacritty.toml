@@ -4,7 +4,7 @@ import = [
     "~/.config/alacritty/alacritty.defaults.toml",
     "~/.config/alacritty/alacritty.os.toml",
     "~/.config/alacritty/alacritty.host.toml",
-    "~/.config/alacritty/colors/kolmila.toml"
+    "~/.config/alacritty/colors/kolmila.toml",
 ]
 
 [env]
@@ -24,3 +24,6 @@ decorations = "full"
 [window.padding]
 x = 2
 y = 2
+
+[keyboard]
+bindings = [{ key = "Insert", mods = "Shift", action = "Paste" }]
