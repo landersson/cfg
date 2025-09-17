@@ -28,6 +28,7 @@ return {
           "clangd",
           "bashls",
           "ruff",
+          "taplo",
         },
         automatic_enable = false, --disable
       })
@@ -60,7 +61,17 @@ return {
       })
       lspconfig.clangd.setup({})
       lspconfig.bashls.setup({})
-      lspconfig.ruff.setup({})
+      lspconfig.taplo.setup({})
+      lspconfig.ruff.setup({
+        init_options = {
+          settings = {
+            -- lineLength = 100,
+            -- logLevel = "debug",
+            -- logFile = "/tmp/ruff.log",
+            configurationPreference = "filesystemFirst"
+          }
+        }
+      })
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
