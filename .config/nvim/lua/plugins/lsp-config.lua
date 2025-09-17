@@ -28,6 +28,7 @@ return {
           "clangd",
           "bashls",
           "ruff",
+          "taplo",
         },
         automatic_enable = false, --disable
       })
@@ -60,6 +61,7 @@ return {
       })
       lspconfig.clangd.setup({})
       lspconfig.bashls.setup({})
+      lspconfig.taplo.setup({})
       lspconfig.ruff.setup({
         init_options = {
           settings = {
