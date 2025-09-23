@@ -47,31 +47,35 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require('lspconfig')
+      -- local lspconfig = vim.lsp.config()
+      --
+      -- lspconfig.lua_ls.setup({
+      --   settings = {
+      --     Lua = {
+      --       diagnostics = {
+      --         disable = { 'missing-fields' },
+      --         globals = { 'vim' }
+      --       }
+      --     },
+      --   },
+      -- })
+      -- lspconfig.clangd.setup({})
+      -- lspconfig.bashls.setup({})
+      -- lspconfig.taplo.setup({})
+      -- lspconfig.ruff.setup({
+      --   init_options = {
+      --     settings = {
+      --       -- lineLength = 100,
+      --       -- logLevel = "debug",
+      --       -- logFile = "/tmp/ruff.log",
+      --       configurationPreference = "filesystemFirst"
+      --     }
+      --   }
+      -- })
 
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              disable = { 'missing-fields' },
-              globals = { 'vim' }
-            }
-          },
-        },
-      })
-      lspconfig.clangd.setup({})
-      lspconfig.bashls.setup({})
-      lspconfig.taplo.setup({})
-      lspconfig.ruff.setup({
-        init_options = {
-          settings = {
-            -- lineLength = 100,
-            -- logLevel = "debug",
-            -- logFile = "/tmp/ruff.log",
-            configurationPreference = "filesystemFirst"
-          }
-        }
-      })
+      vim.lsp.config('clangd', {})
+      vim.lsp.enable({ 'bashls', 'taplo', 'ruff', 'clangd', 'lua_ls' })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
