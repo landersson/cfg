@@ -25,8 +25,13 @@ vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = t
   { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end,
   { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>D', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>Q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Show most severe issue in gutter
+vim.diagnostic.config({
+  severity_sort = true,
+})
 
 vim.o.wildmode = 'longest,list,full'
 vim.o.wildmenu = true
@@ -112,7 +117,6 @@ if vim.fn.has("mac") == 1 then
   vim.o.shell = "/opt/homebrew/bin/bash"
 end
 
---vim.lsp.set_log_level("debug")
 
 -- Neovide configuration
 if vim.g.neovide then
