@@ -26,4 +26,4 @@ x = 2
 y = 2
 
 [keyboard]
-bindings = [{ key = "Insert", mods = "Shift", action = "Paste" }]
+# bindings = [{ key = "Insert", mods = "Shift", action = "Paste" }]
