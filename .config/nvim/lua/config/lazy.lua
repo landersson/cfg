@@ -48,7 +48,37 @@ require("lazy").setup({
         require("themes.substrata").colorscheme()
       end,
     },
+    {
+      "folke/snacks.nvim",
+      opts = {
+        terminal = {
+          enabled = true,
+          win = {
+            position = "bottom",
+            size = 0.3,
+            float = {
+              border = "single",
+            },
+          },
+        }
+      },
+      config = function(_, opts)
+        require("snacks").setup(opts)
 
+        -- Set up keybindings
+        vim.keymap.set("n", "<leader>t", function()
+          require("snacks").terminal.toggle("/bin/bash", { position = "bottom", size = 0.3 })
+        end, { desc = "Toggle Bottom Terminal" })
+
+        vim.keymap.set("n", "<leader>T", function()
+          require("snacks").terminal.toggle({ position = "float", size = 0.5 })
+        end, { desc = "Toggle Floating Terminal" })
+
+        vim.keymap.set("n", "<leader>g", function()
+          require("snacks").terminal.toggle({ command = "lazygit", position = "float" })
+        end, { desc = "Open LazyGit" })
+      end,
+    },
     { import = "plugins" },
   },
   -- Configure any other settings here. See the documentation for more details.
