@@ -3,7 +3,8 @@ require("config.lazy")
 vim.keymap.set("i", "jk", "<Esc>", { remap = true })
 
 -- Toggle comment status for entire selection
-vim.keymap.set({ "n", "v" }, "<leader>cc", "gcc", { remap = true })
+vim.keymap.set({ "n" }, "<leader>cc", "gcc", { remap = true })
+vim.keymap.set({ "v" }, "<leader>cc", "gc", { remap = true })
 
 -- Invert comment status individually for all lines in selection
 vim.keymap.set({ "n", "v" }, "<leader>ci", ":normal gcc<cr>", { remap = true })
