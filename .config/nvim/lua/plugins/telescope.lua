@@ -2,7 +2,7 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim' },
     config = function()
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
@@ -16,7 +16,23 @@ return {
             },
           },
         },
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+              -- even more opts
+              sorting_strategy = "ascending",
+              layout_strategy = "bottom_pane",
+              border = true,
+              previewer = false,
+              shorten_path = false,
+              layout_config = {
+                height = 8,
+              },
+            },
+          }
+        }
       }
+      require("telescope").load_extension("ui-select")
       -- Telescope key mapping
       local builtin = require("telescope.builtin")
       vim.keymap.set('n', '<C-p>', builtin.find_files, {})

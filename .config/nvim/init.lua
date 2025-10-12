@@ -119,6 +119,7 @@ if vim.fn.has("mac") == 1 then
 end
 
 
+
 -- Neovide configuration
 if vim.g.neovide then
   -- Disable all animations

@@ -94,12 +94,13 @@ return {
           -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
           -- vim.keymap.set('n', '<space>wl', function()
           --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-          -- end, opts)
+          -- end, opts
           -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-          -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+          vim.keymap.set({ 'n', 'v' }, '<leader>f', vim.lsp.buf.code_action, opts)
+          -- vim.keymap.set({ 'n', 'v' }, '<leader>F', vim.lsp.buf.code_action, { buffer = ev.buf, apply = true })
           vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-          vim.keymap.set('n', '<leader>f', function()
-            vim.lsp.buf.format { async = true }
+          vim.keymap.set({ 'n', 'v' }, '<leader>F', function()
+            vim.lsp.buf.code_action { apply = true }
           end, opts)
         end,
       })
