@@ -39,6 +39,5 @@ return {
       return hl_groups
     end
     hl.get_hl_groups = f
-    print("HL GROUPS:", hl.get_hl_groups_org())
   end
 }
