@@ -73,7 +73,7 @@ return {
       --   }
       -- })
 
-      vim.lsp.config('clangd', {})
+      vim.lsp.config('clangd', { cmd = { 'clangd', '--clang-tidy', '--enable-config' } })
       vim.lsp.enable({ 'bashls', 'taplo', 'ruff', 'clangd', 'lua_ls' })
 
       vim.api.nvim_create_autocmd('LspAttach', {
