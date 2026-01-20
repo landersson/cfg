@@ -5,13 +5,9 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
   config = function()
-    local configs = require("nvim-treesitter.configs")
-
-    configs.setup({
+    require("nvim-treesitter").setup({
       ensure_installed = { "c", "cpp", "json", "lua", "python", "vim", "vimdoc", "javascript", "html", "yaml" },
-      sync_install = false,
-      highlight = { enable = true },
-      indent = { enable = true },
     })
+    vim.treesitter.language.register("bash", "zsh")
   end
 }
