@@ -1,23 +1,42 @@
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
-  event = "VeryLazy",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  branch = "main",
+  init = function()
+    -- Disable entire built-in ftplugin mappings to avoid conflicts.
+    -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+    vim.g.no_plugin_maps = true
+
+    -- Or, disable per filetype (add as you like)
+    -- vim.g.no_python_maps = true
+    -- vim.g.no_ruby_maps = true
+    -- vim.g.no_rust_maps = true
+    -- vim.g.no_go_maps = true
+  end,
   config = function()
-    -- No setup call needed; just define keymaps using the textobjects API
-    local select = require("nvim-treesitter.textobjects.select")
+    local select = require("nvim-treesitter-textobjects.select")
 
-    local keymaps = {
-      ["af"] = "@function.outer",
-      ["if"] = "@function.inner",
-      ["a,"] = "@parameter.outer",
-      ["i,"] = "@parameter.inner",
-      ["ac"] = "@class.outer",
-    }
+    -- Function textobjects
+    vim.keymap.set({ "x", "o" }, "af", function()
+      select.select_textobject("@function.outer", "textobjects")
+    end)
+    vim.keymap.set({ "x", "o" }, "if", function()
+      select.select_textobject("@function.inner", "textobjects")
+    end)
 
-    for keymap, query in pairs(keymaps) do
-      vim.keymap.set({ "x", "o" }, keymap, function()
-        select.select_textobject(query, "textobjects")
-      end)
-    end
-  end
+    -- Class textobjects
+    vim.keymap.set({ "x", "o" }, "a,", function()
+      select.select_textobject("@class.outer", "textobjects")
+    end)
+    vim.keymap.set({ "x", "o" }, "i,", function()
+      select.select_textobject("@class.inner", "textobjects")
+    end)
+
+    -- Parameter textobjects
+    vim.keymap.set({ "x", "o" }, "a,", function()
+      select.select_textobject("@parameter.outer", "textobjects")
+    end)
+    vim.keymap.set({ "x", "o" }, "i,", function()
+      select.select_textobject("@parameter.inner", "textobjects")
+    end)
+  end,
 }
