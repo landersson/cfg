@@ -1,0 +1,2 @@
+
+export PS1='\[\e]0;\u@\h: \w\a\]\[\e[29;1m\]root@rcvd:\[\e[0m\]\W:>'
