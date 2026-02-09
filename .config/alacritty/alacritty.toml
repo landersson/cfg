@@ -29,3 +29,8 @@ import = [
     "~/.config/alacritty/colors/kolmila.toml",
 ]
 # bindings = [{ key = "Insert", mods = "Shift", action = "Paste" }]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b\r"
