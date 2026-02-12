@@ -102,13 +102,21 @@ vim.keymap.set('n', '<leader><space>', function()
   print(word)
 end, { desc = 'Reload colorscheme' })
 
+-- Autoformat on save toggle
+vim.g.autoformat_enabled = true
+
+vim.keymap.set('n', '<leader>uf', function()
+  vim.g.autoformat_enabled = not vim.g.autoformat_enabled
+  vim.notify("Autoformat " .. (vim.g.autoformat_enabled and "enabled" or "disabled"))
+end, { desc = 'Toggle autoformat on save' })
+
 -- Autocommand to format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),
   callback = function(args)
-    -- Only format if an LSP client is attached to the buffer
-    if #vim.lsp.get_clients() > 0 then
-      vim.lsp.buf.format({ async = false }) -- Set async = false for synchronous formatting
+    -- Only format if autoformat is enabled and an LSP client is attached
+    if vim.g.autoformat_enabled and #vim.lsp.get_clients() > 0 then
+      vim.lsp.buf.format({ async = false })
     end
   end,
 })
