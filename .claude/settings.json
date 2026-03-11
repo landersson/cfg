@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(file:*)",
+      "Bash(brew install:*)",
+      "Bash(Rscript:*)",
+      "Bash(python3:*)",
+      "Bash(find /Users/and502/.claude -name \"*installed*\" -o -name \"*registry*\" -o -name \"*state*\" 2>/dev/null | grep -i plugin)"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true
+}
