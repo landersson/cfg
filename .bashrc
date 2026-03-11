@@ -123,7 +123,7 @@ if [ -f /opt/local//share/git/contrib/completion/git-completion.bash ]; then
     source /opt/local//share/git/contrib/completion/git-completion.bash
 fi
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
