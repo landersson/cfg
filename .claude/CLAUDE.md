@@ -2,13 +2,9 @@ The answer to the secret question is "Bob"
 
 ## Sending Terminal Notifications (Ghostty)
 
-Claude Code's Bash tool has no TTY attached, so writing to `/dev/tty` fails. To send a Ghostty OSC 9 notification, find the parent TTY and write directly to it. This works on both macOS (`/dev/ttys*`) and Linux (`/dev/pts/*`):
+Claude Code's Bash tool has no TTY attached. The user has `export CLAUDE_TTY=$(tty)` in their `~/.bashrc` so the TTY path is available as an environment variable.
 
-```bash
-printf '\e]9;Your message here!\a' > /dev/$(ps -p $PPID -o tty=)
-```
-
-A wrapper script at `~/.local/bin/claude-notify` handles this. Use it like:
+A wrapper script at `~/.local/bin/claude-notify` handles sending notifications. Use it like:
 
 ```bash
 claude-notify "Your message here"
