@@ -1,6 +1,7 @@
 {
   "permissions": {
     "allow": [
+      "Bash(claude-notify*)",
       "Bash(file:*)",
       "Bash(brew install:*)",
       "Bash(Rscript:*)",
