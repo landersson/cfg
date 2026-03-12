@@ -1,0 +1,20 @@
+#!/bin/sh
+# Send a notification from Claude Code
+# Usage: claude-notify "Your message here"
+MESSAGE="${1:-Notification from Claude Code}"
+
+# Try Ghostty OSC 9 via CLAUDE_TTY env var first
+if [ -n "$CLAUDE_TTY" ] && printf '\e]9;%s\a' "$MESSAGE" > "$CLAUDE_TTY" 2>/dev/null; then
+    exit 0
+fi
+
+# Fall back to macOS system notification
+if command -v osascript > /dev/null 2>&1; then
+    osascript << EOF
+display notification "$MESSAGE" with title "Claude Code"
+EOF
+    exit 0
+fi
+
+echo "claude-notify: could not send notification" >&2
+exit 1
