@@ -1,7 +1,4 @@
 {
-  "enabledPlugins": {
-    "clangd-lsp@claude-plugins-official": true
-  },
   "permissions": {
     "allow": [
       "Bash(claude-notify*)",
@@ -13,9 +10,15 @@
     ],
     "defaultMode": "bypassPermissions"
   },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true
+  },
   "sandbox": {
     "filesystem": {
-      "allowWrite": ["//dev/ttys*", "//dev/pts/*"]
+      "allowWrite": [
+        "//dev/ttys*",
+        "//dev/pts/*"
+      ]
     }
   },
   "alwaysThinkingEnabled": true,
