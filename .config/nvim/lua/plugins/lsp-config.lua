@@ -38,7 +38,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     config = function()
       require("mason-tool-installer").setup({
-        ensure_installed = { 'shfmt' }
+        ensure_installed = { 'shfmt', 'tree-sitter-cli' }
       })
     end
   },
@@ -73,7 +73,11 @@ return {
       --   }
       -- })
 
-      vim.lsp.config('clangd', { cmd = { 'clangd', '--clang-tidy', '--enable-config' } })
+      local clangd_cmd = { 'clangd', '--clang-tidy', '--enable-config' }
+      if vim.uv.os_gethostname() == 'fenrir-bm' then
+        table.insert(clangd_cmd, '-j=8')
+      end
+      vim.lsp.config('clangd', { cmd = clangd_cmd })
       vim.lsp.enable({ 'bashls', 'taplo', 'ruff', 'clangd', 'lua_ls' })
 
       vim.api.nvim_create_autocmd('LspAttach', {
