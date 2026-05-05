@@ -79,6 +79,10 @@ require("lazy").setup({
         end, { desc = "Open LazyGit" })
       end,
     },
+    { "savq/melange-nvim" },
+    { "miikanissi/modus-themes.nvim", priority = 1000 },
+    { "xero/miasma.nvim" },
+    { "saeeedhany/parchment.nvim" },
     {
       'AlexvZyl/nordic.nvim',
       lazy = false,
