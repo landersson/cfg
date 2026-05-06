@@ -92,6 +92,11 @@ vim.keymap.set('n', '<leader>a', function()
   end
 end, { desc = 'Live grep word under cursor (whole word)' })
 
+-- Add keyboard shortcut <leader>rr to call Telescope resume
+vim.keymap.set('n', '<leader>rr', function()
+  require('telescope.builtin').resume()
+end, { desc = 'Resume last Telescope picker' })
+
 -- Hack to reload in-tree substrata color theme... for theme dev
 vim.keymap.set('n', '<leader><space>', function()
   local word = vim.fn.expand('<cword>')
