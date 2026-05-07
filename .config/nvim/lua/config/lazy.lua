@@ -26,17 +26,19 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-    'slugbyte/lackluster.nvim',
-    'uga-rosa/ccc.nvim',
-    'brenoprata10/nvim-highlight-colors',
-    {
-      "echasnovski/mini.diff",
-      opts = {
-        view = {
-          style = 'number',
-        },
-      },
-    },
+
+    -- Color picker
+    -- 'uga-rosa/ccc.nvim',
+    -- 'brenoprata10/nvim-highlight-colors',
+    -- {
+    --   "echasnovski/mini.diff",
+    --   opts = {
+    --     view = {
+    --       style = 'number',
+    --     },
+    --   },
+    -- },
+
 
     -- Local, modified substrata theme
     {
@@ -78,32 +80,6 @@ require("lazy").setup({
           require("snacks").terminal.toggle({ command = "lazygit", position = "float" })
         end, { desc = "Open LazyGit" })
       end,
-    },
-    { "savq/melange-nvim" },
-    { "miikanissi/modus-themes.nvim", priority = 1000 },
-    { "xero/miasma.nvim" },
-    { "saeeedhany/parchment.nvim" },
-    {
-      'AlexvZyl/nordic.nvim',
-      lazy = false,
-      priority = 1000,
-      config = function()
-        require('nordic').load()
-      end
-    },
-    {
-      "zenbones-theme/zenbones.nvim",
-      -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-      -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-      -- In Vim, compat mode is turned on as Lush only works in Neovim.
-      dependencies = "rktjmp/lush.nvim",
-      lazy = false,
-      priority = 1000,
-      -- you can set set configuration options here
-      -- config = function()
-      --     vim.g.zenbones_darken_comments = 45
-      --     vim.cmd.colorscheme('zenbones')
-      -- end
     },
     { import = "plugins" },
   },
