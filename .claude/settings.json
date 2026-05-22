@@ -8,12 +8,13 @@
       "Bash(python3:*)",
       "Bash(find /Users/and502/.claude -name \"*installed*\" -o -name \"*registry*\" -o -name \"*state*\" 2>/dev/null | grep -i plugin)"
     ],
-    "defaultMode": "bypassPermissions"
-  },
-  "enabledPlugins": {
-    "clangd-lsp@claude-plugins-official": true
+    "defaultMode": "auto"
   },
   "model": "opus",
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
+  },
   "sandbox": {
     "filesystem": {
       "allowWrite": [
@@ -23,6 +24,8 @@
     }
   },
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "effortLevel": "xhigh"
+  "skipAutoPermissionPrompt": true
 }

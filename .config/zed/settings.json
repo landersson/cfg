@@ -7,6 +7,23 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+  "icon_theme": {
+    "mode": "light",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "minimap": {
+    "show": "always"
+  },
+  "ui_font_weight": 400.0,
+  "session": {
+    "trust_all_worktrees": true
+  },
   "project_panel": {
     "dock": "left"
   },
@@ -24,9 +41,13 @@
   "git_panel": {
     "dock": "left"
   },
-  "theme": "Nord Dark",
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
   "vim_mode": true,
-  "ui_font_size": 12.0,
+  "ui_font_size": 20.0,
   "ui_font_family": "Zed Plex Mono",
   "buffer_font_family": "Zed Plex Mono",
   "buffer_font_size": 20
