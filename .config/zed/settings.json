@@ -24,6 +24,21 @@
   "session": {
     "trust_all_worktrees": true
   },
+  "ssh_connections": [
+    {
+      "host": "rocky.rcv.csiro.au",
+      "args": [
+        "-4"
+      ],
+      "projects": [
+        {
+          "paths": [
+            "/home/and502/dev/remote-test"
+          ]
+        }
+      ]
+    }
+  ],
   "project_panel": {
     "dock": "left"
   },

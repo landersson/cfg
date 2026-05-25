@@ -10,5 +10,10 @@
     "bindings": {
       ", w": "workspace::Save"
     }
+  },
+  {
+    "bindings": {
+      "ctrl-cmd-f5": "editor::ReloadFile"
+    }
   }
 ]
