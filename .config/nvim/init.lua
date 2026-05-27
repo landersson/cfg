@@ -88,6 +88,18 @@ vim.api.nvim_create_autocmd('ModeChanged', {
   end,
 })
 
+-- Mouse-drag selection leaves you *in* Visual mode, so the autocmd above won't
+-- fire until you next change modes. Copy to PRIMARY the instant the mouse
+-- button is released, then restore the selection with gv.
+vim.keymap.set('x', '<LeftRelease>', '"*ygv', { silent = true })
+
+-- Double/triple/quadruple-click select a word/line/block and leave you in
+-- Visual mode with no drag-release, so handle those clicks too: let the click
+-- do its normal selection, then yank to PRIMARY and restore the selection.
+vim.keymap.set({ 'n', 'x' }, '<2-LeftMouse>', '<2-LeftMouse>"*ygv', { silent = true })
+vim.keymap.set({ 'n', 'x' }, '<3-LeftMouse>', '<3-LeftMouse>"*ygv', { silent = true })
+vim.keymap.set({ 'n', 'x' }, '<4-LeftMouse>', '<4-LeftMouse>"*ygv', { silent = true })
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
