@@ -69,6 +69,25 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamed'
 end)
 
+-- Auto-copy the visual selection to the X11 PRIMARY selection (register *)
+-- whenever you leave Visual mode, so it's ready for middle-click paste
+-- without an explicit yank.
+vim.api.nvim_create_autocmd('ModeChanged', {
+  group = vim.api.nvim_create_augroup('auto-primary-selection', { clear = true }),
+  pattern = '[vV\22]*:*', -- leaving any Visual mode (charwise/linewise/blockwise)
+  callback = function()
+    local old, new = vim.v.event.old_mode, vim.v.event.new_mode
+    if old:match('^[vV\22]') and not new:match('^[vV\22]') then
+      local mode = old:sub(1, 1)
+      local ok, lines = pcall(vim.fn.getregion,
+        vim.fn.getpos("'<"), vim.fn.getpos("'>"), { type = mode })
+      if ok and lines and #lines > 0 then
+        vim.fn.setreg('*', table.concat(lines, '\n'), mode)
+      end
+    end
+  end,
+})
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`

@@ -34,3 +34,8 @@ import = [
 key = "Return"
 mods = "Shift"
 chars = "\u001b\r"
+
+[[keyboard.bindings]]
+key = "Insert"
+mods = "Shift"
+action = "Paste"

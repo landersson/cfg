@@ -51,4 +51,5 @@
 font-size = 16
 theme = Wilmersdorf
 keybind = shift+enter=text:\x1b\r
+keybind = shift+insert=paste_from_clipboard
 desktop-notifications = true
