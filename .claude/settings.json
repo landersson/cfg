@@ -10,7 +10,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "fable[1m]",
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true
@@ -27,5 +27,6 @@
   "effortLevel": "xhigh",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true
 }

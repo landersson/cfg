@@ -11,3 +11,6 @@ claude-notify "Your message here"
 ```
 
 Whenever you need input from the user (e.g. you are blocked, need a decision, or have a question), always send a Ghostty notification using `claude-notify` before asking.
+
+## Git commit message
+Please keep commit messages brief and to the point. Do not include any attributions or links to coding session logs.
